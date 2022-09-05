@@ -1,10 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import "./assets/css/atlantis.css";
+import "./assets/css/atlantis.min.css";
+import "./assets/css/atlantis.css.map";
+import "./assets/css/bootstrap.min.css";
+import "./assets/css/demo.css";
+import "./assets/css/fonts.css";
+import "./assets/css/fonts.min.css";
+import reportWebVitals from "./reportWebVitals";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <App />
