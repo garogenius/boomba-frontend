@@ -25,7 +25,7 @@ const Footer = () => {
             </ul>
           </nav>
           <div className="copyright ml-auto">
-            2018, made with <i className="fa fa-heart heart text-danger"></i> by{" "}
+            2018, design with <i className="fa fa-heart heart text-danger"></i> by{" "}
             <a href="https://www.themekita.com">ThemeKita</a>
           </div>
         </div>

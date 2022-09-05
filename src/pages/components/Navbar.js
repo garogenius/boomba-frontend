@@ -298,7 +298,7 @@ const Navbar = () => {
                         </div>
                         <div className="u-text">
                           <h4>Hizrian</h4>
-                          <p className="text-muted">hello@example.com</p>
+                          <p className="text-muted">bomba@example.com</p>
                           <a
                             href="profile.html"
                             className="btn btn-xs btn-secondary btn-sm"
