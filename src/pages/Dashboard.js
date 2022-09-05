@@ -2,8 +2,7 @@ import React from "react";
 import Main from "./components/Main";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
-
-const Home = () => {
+const Dashboard = () => {
   return (
     <div>
       <div class="wrapper">
@@ -15,4 +14,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Dashboard;

@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import "./assets/css/atlantis.css";
 import "./assets/css/atlantis.min.css";
-import "./assets/css/atlantis.css.map";
+// import "./assets/css/atlantis.css.map";
 import "./assets/css/bootstrap.min.css";
 import "./assets/css/demo.css";
 import "./assets/css/fonts.css";
