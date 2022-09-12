@@ -64,13 +64,13 @@ const Sidebar = () => {
               </li>
               <li className="nav-item">
                 <Link to="/new-sale">
-                  <i className="fas fa-layer-group"></i>
+                  <i className="fas fa-shopping-cart"></i>
                   <p>New Sale</p>
                 </Link>
               </li>
               <li className="nav-item">
                 <a data-toggle="collapse" href="#sidebarLayouts">
-                  <i className="fas fa-th-list"></i>
+                  <i className="fas fa-store"></i>
                   <p>Store</p>
                   <span className="caret"></span>
                 </a>
@@ -91,7 +91,7 @@ const Sidebar = () => {
               </li>
               <li className="nav-item">
                 <a data-toggle="collapse" href="#sidebarLayouts">
-                  <i class="fa-solid fa-code-branch"></i>
+                  <i class="fas fa-code-branch"></i>
                   <p>Branch</p>
                   <span className="caret"></span>
                 </a>
@@ -112,7 +112,7 @@ const Sidebar = () => {
               </li>
               <li className="nav-item">
                 <a data-toggle="collapse" href="#sidebarLayouts">
-                  <i class="fa-solid fa-code-branch"></i>
+                  <i class="fas fa-users"></i>
                   <p>Staffs</p>
                   <span className="caret"></span>
                 </a>
@@ -133,19 +133,19 @@ const Sidebar = () => {
               </li>
               <li className="nav-item">
                 <Link data-toggle="collapse" href="">
-                  <i className="fas fa-layer-group"></i>
+                  <i className="fas fa-money-bill-alt"></i>
                   <p>Expenses</p>
                 </Link>
               </li>
               <li className="nav-item">
                 <Link data-toggle="collapse" href="">
-                  <i className="fas fa-layer-group"></i>
-                  <p>View History</p>
+                  <i className="fas fa-file-alt"></i>
+                  <p>View Branch History</p>
                 </Link>
               </li>
               <li className="nav-item">
                 <Link data-toggle="collapse" href="">
-                  <i className="fas fa-layer-group"></i>
+                  <i className="fas fa-dolly-flatbed"></i>
                   <p>Suppliers</p>
                 </Link>
               </li>
