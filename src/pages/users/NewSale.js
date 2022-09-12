@@ -5,8 +5,10 @@ import Sidebar from "./components/Sidebar";
 const NewSale = () => {
   return (
     <div>
-      <Navbar />
-      <Sidebar />
+      <div class="wrapper">
+        <Navbar />
+        <Sidebar />
+      </div>
     </div>
   );
 };
