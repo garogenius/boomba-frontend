@@ -1,17 +1,24 @@
-import Dashboard from "./pages/Dashboard";
-import NotFound from "./pages/NotFound";
+import Dashboard from "./pages/users/Dashboard";
+import NotFound from "./pages/users/NotFound";
+import NewSale from "./pages/users/NewSale";
 
-import { Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
-      <Dashboard />
-      {/* <Routes>
-        <Route exact path="/" element={<Dashboard />} />
-        <Route exact path="/404" element={<NotFound />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes> */}
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Dashboard} />
+          <Route exact path="/404" component={NotFound} />
+          <Route exact path="/new-sale" component={NewSale} />
+        </Switch>
+      </Router>
     </div>
   );
 }

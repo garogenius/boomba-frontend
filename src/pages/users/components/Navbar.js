@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "./Header";
-import Profile from "../../assets/img/profile.jpg";
+import Profile from "../../../assets/img/profile.jpg";
 const Navbar = () => {
   return (
     <div>
