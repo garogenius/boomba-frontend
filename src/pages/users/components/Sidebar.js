@@ -77,14 +77,14 @@ const Sidebar = () => {
                 <div className="collapse" id="sidebarLayouts">
                   <ul className="nav nav-collapse">
                     <li>
-                      <a href="sidebar-style-1.html">
+                      <Link to="sidebar-style-1.html">
                         <span className="sub-item">View Product</span>
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="overlay-sidebar.html">
+                      <Link to="overlay-sidebar.html">
                         <span className="sub-item">Add Product</span>
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </div>
@@ -98,14 +98,14 @@ const Sidebar = () => {
                 <div className="collapse" id="sidebarLayouts">
                   <ul className="nav nav-collapse">
                     <li>
-                      <a href="sidebar-style-1.html">
+                      <Link to="/all-branch">
                         <span className="sub-item">View Branches</span>
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="overlay-sidebar.html">
+                      <Link to="overlay-sidebar.html">
                         <span className="sub-item">Create Branch</span>
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </div>
@@ -119,32 +119,32 @@ const Sidebar = () => {
                 <div className="collapse" id="sidebarLayouts">
                   <ul className="nav nav-collapse">
                     <li>
-                      <a href="sidebar-style-1.html">
+                      <Link to="sidebar-style-1.html">
                         <span className="sub-item">View Staffs</span>
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="overlay-sidebar.html">
+                      <Link to="overlay-sidebar.html">
                         <span className="sub-item">Create Staff</span>
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </div>
               </li>
               <li className="nav-item">
-                <Link data-toggle="collapse" href="">
+                <Link data-toggle="collapse" to="/expenses">
                   <i className="fas fa-money-bill-alt"></i>
                   <p>Expenses</p>
                 </Link>
               </li>
               <li className="nav-item">
-                <Link data-toggle="collapse" href="">
+                <Link to="branch">
                   <i className="fas fa-file-alt"></i>
                   <p>View Branch History</p>
                 </Link>
               </li>
               <li className="nav-item">
-                <Link data-toggle="collapse" href="">
+                <Link data-toggle="collapse" to="/supplier">
                   <i className="fas fa-dolly-flatbed"></i>
                   <p>Suppliers</p>
                 </Link>
