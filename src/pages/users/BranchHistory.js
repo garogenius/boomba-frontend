@@ -6,13 +6,13 @@ import Sidebar from "./components/Sidebar";
 const BranchHistory = () => {
   return (
     <div>
-      <div class="wrapper">
+      <div className="wrapper">
         <Navbar />
         <Sidebar />
-        <div class="main-panel">
-          <div class="content">
-            <div class="page-inner">
-              <h4 class="page-title">Branch History</h4>
+        <div className="main-panel">
+          <div className="content">
+            <div className="page-inner">
+              <h4 className="page-title">Branch History</h4>
             </div>
             <Footer />
           </div>
