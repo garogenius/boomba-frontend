@@ -10,6 +10,7 @@ import Supplier from "./pages/users/Supplier";
 import SingleBranch from "./pages/users/SingleBranch";
 import BranchHistory from "./pages/users/BranchHistory";
 import AddProduct from "./pages/users/AddProduct";
+import AddStaff from "./pages/users/AddStaff";
 
 import {
   BrowserRouter as Router,
@@ -35,6 +36,7 @@ function App() {
           <Route exact path="/branch" component={SingleBranch} />
           <Route exact path="/branch-details" component={BranchHistory} />
           <Route exact path="/add-product" component={AddProduct} />
+          <Route exact path="/add-staff" component={AddStaff} />
         </Switch>
       </Router>
     </div>

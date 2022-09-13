@@ -90,11 +90,11 @@ const Sidebar = () => {
                 </div>
               </li>
               <li className="nav-item">
-                <a data-toggle="collapse" href="#sidebarLayouts">
+                <Link data-toggle="collapse" to="/branch">
                   <i class="fas fa-code-branch"></i>
                   <p>Branch</p>
                   <span className="caret"></span>
-                </a>
+                </Link>
                 <div className="collapse" id="sidebarLayouts">
                   <ul className="nav nav-collapse">
                     <li>
@@ -111,11 +111,11 @@ const Sidebar = () => {
                 </div>
               </li>
               <li className="nav-item">
-                <a data-toggle="collapse" href="#sidebarLayouts">
+                <Link data-toggle="collapse" to="all-staff">
                   <i class="fas fa-users"></i>
                   <p>Staffs</p>
                   <span className="caret"></span>
-                </a>
+                </Link>
                 <div className="collapse" id="sidebarLayouts">
                   <ul className="nav nav-collapse">
                     <li>
