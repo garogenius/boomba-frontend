@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
@@ -17,7 +18,7 @@ const Store = () => {
                 <ul className="breadcrumbs">
                   <li className="nav-home">
                     <a href="/">
-                      <i className="flaticon-home"></i>
+                      <i className="flaticon-store"></i>
                     </a>
                   </li>
                 </ul>
@@ -30,7 +31,12 @@ const Store = () => {
                         <h4 className="card-title">Products in store</h4>
                         <button className="btn btn-primary btn-round ml-auto">
                           <i className="fa fa-plus"></i>
-                          Add Product
+                          <Link
+                            className="btn btn-primary btn-round ml-auto"
+                            to="/add-product"
+                          >
+                            Add Product
+                          </Link>
                         </button>
                       </div>
                     </div>
