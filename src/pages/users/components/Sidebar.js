@@ -69,11 +69,11 @@ const Sidebar = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <a data-toggle="collapse" href="#sidebarLayouts">
+                <Link data-toggle="collapse" to="/store">
                   <i className="fas fa-store"></i>
                   <p>Store</p>
                   <span className="caret"></span>
-                </a>
+                </Link>
                 <div className="collapse" id="sidebarLayouts">
                   <ul className="nav nav-collapse">
                     <li>
