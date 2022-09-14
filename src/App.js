@@ -11,6 +11,8 @@ import SingleBranch from "./pages/users/SingleBranch";
 import BranchHistory from "./pages/users/BranchHistory";
 import AddProduct from "./pages/users/AddProduct";
 import AddStaff from "./pages/users/AddStaff";
+import Login from "./pages/users/Login";
+import CreateBusiness from "./pages/users/CreateBusiness";
 
 import {
   BrowserRouter as Router,
@@ -18,10 +20,33 @@ import {
   Switch,
   Redirect,
 } from "react-router-dom";
+// import routes from "./utils/routes/userRoutes";
+// import ProtectedRoute from "./ProtectedRoute";
 
 function App() {
+  // let allroutes = routes;
   return (
     <div className="App">
+      {/* <Routes>
+        <Route exact path="/" element={<Dashboard />} />
+        <Route exact path="/404" element={<NotFound />} />
+        {allroutes.map((route) => {
+          return route.protected ? (
+            <Route
+              path={route.path}
+              element={
+                <ProtectedRoute prefix={route.path.includes("") ? "" : ""}>
+                  {<route.component />}
+                </ProtectedRoute>
+              }
+            />
+          ) : (
+            <Route path={route.path} element={<route.component />} />
+          );
+        })}
+        <Route path="*" element={<NotFound />} />
+      </Routes> */}
+
       <Router>
         <Switch>
           <Route exact path="/" component={Dashboard} />
@@ -37,6 +62,8 @@ function App() {
           <Route exact path="/branch-details" component={BranchHistory} />
           <Route exact path="/add-product" component={AddProduct} />
           <Route exact path="/add-staff" component={AddStaff} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/create-business" component={CreateBusiness} />
         </Switch>
       </Router>
     </div>
