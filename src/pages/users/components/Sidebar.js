@@ -52,7 +52,7 @@ const Sidebar = () => {
             </div>
             <ul className="nav nav-primary">
               <li className="nav-item active">
-                <Link to="/">
+                <Link to="/dashboard">
                   <i className="fas fa-home"></i>
                   <p>Dashboard</p>
                 </Link>
@@ -90,7 +90,7 @@ const Sidebar = () => {
                 </div>
               </li>
               <li className="nav-item">
-                <Link data-toggle="collapse" to="/branch">
+                <Link data-toggle="collapse" to="/all-branch">
                   <i class="fas fa-code-branch"></i>
                   <p>Branch</p>
                   <span className="caret"></span>
@@ -111,7 +111,7 @@ const Sidebar = () => {
                 </div>
               </li>
               <li className="nav-item">
-                <Link data-toggle="collapse" to="all-staff">
+                <Link data-toggle="collapse" to="/all-staff">
                   <i class="fas fa-users"></i>
                   <p>Staffs</p>
                   <span className="caret"></span>
@@ -138,7 +138,7 @@ const Sidebar = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="branch">
+                <Link to="/branch-details">
                   <i className="fas fa-file-alt"></i>
                   <p>View Branch History</p>
                 </Link>
