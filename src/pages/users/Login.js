@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "./components/button/Button";
-import Input from "./components/inputs/Input";
+import InputField from "./components/inputs/InputField";
 
 const Login = () => {
   const [inputValue, setInputValue] = useState({
@@ -33,7 +33,7 @@ const Login = () => {
                   <h4 className="text-center text-dark">Login</h4>
                   <form method="" action="">
                     <div className="">
-                      <Input
+                      <InputField
                         type="text"
                         value={username}
                         placeholder="Username"
@@ -45,7 +45,7 @@ const Login = () => {
                     </div>
 
                     <div className="">
-                      <Input
+                      <InputField
                         type="password"
                         value={password}
                         placeholder="Password"

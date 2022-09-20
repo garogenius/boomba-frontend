@@ -1,6 +1,6 @@
 import React from "react";
 
-const AccountType = ({ value, label, name, onChange }) => (
+const BusinessType = ({ value, label, name, onChange }) => (
   <div className="form-group">
     {label && <label htmlFor="input-field">{label}</label>}
     <select
@@ -11,10 +11,9 @@ const AccountType = ({ value, label, name, onChange }) => (
       onChange={onChange}
     >
       <option value={value} onChange={onChange}>
-        Account type
+        Business type
       </option>
     </select>
   </div>
 );
-
-export default AccountType;
+export default BusinessType;

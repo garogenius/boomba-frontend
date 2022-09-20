@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "./components/button/Button";
-import Input from "./components/inputs/Input";
+import InputField from "./components/inputs/InputField";
 import Select from "./components/select/AccountType";
 const CreateUser = () => {
   const [inputValue, setInputValue] = useState({
@@ -39,7 +39,7 @@ const CreateUser = () => {
                     <div className="container-fluid">
                       <div className="row">
                         <div class="col-md-4">
-                          <Input
+                          <InputField
                             type="text"
                             value={name}
                             placeholder="Name"
@@ -50,7 +50,7 @@ const CreateUser = () => {
                           />
                         </div>
                         <div class="col-md-4">
-                          <Input
+                          <InputField
                             type="email"
                             value={email}
                             placeholder="email"
@@ -61,7 +61,7 @@ const CreateUser = () => {
                           />
                         </div>
                         <div class="col-md-4">
-                          <Input
+                          <InputField
                             type="text"
                             value={phone}
                             placeholder="Phone"
@@ -72,7 +72,7 @@ const CreateUser = () => {
                           />
                         </div>
                         <div class="col-md-4">
-                          <Input
+                          <InputField
                             type="text"
                             value={nin}
                             placeholder="Nin No"
@@ -91,7 +91,7 @@ const CreateUser = () => {
                           />
                         </div>
                         <div class="col-md-4">
-                          <Input
+                          <InputField
                             type="text"
                             value={state}
                             placeholder="state"
@@ -101,7 +101,7 @@ const CreateUser = () => {
                           />
                         </div>
                         <div class="col-md-4">
-                          <Input
+                          <InputField
                             type="text"
                             value={lga}
                             placeholder="Local Govt"
@@ -111,7 +111,7 @@ const CreateUser = () => {
                           />
                         </div>
                         <div class="col-md-4">
-                          <Input
+                          <InputField
                             type="text"
                             value={street}
                             placeholder="street"
@@ -122,7 +122,7 @@ const CreateUser = () => {
                         </div>
 
                         <div class="col-md-4">
-                          <Input
+                          <InputField
                             type="password"
                             value={password}
                             placeholder="password"
