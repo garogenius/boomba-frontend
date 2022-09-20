@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import Button from "./components/button/Button";
 import Input from "./components/inputs/Input";
 
 const Login = () => {
@@ -66,9 +67,7 @@ const Login = () => {
                     </div>
 
                     <div className="button">
-                      <button className="btn btn-primary w-100 rounded">
-                        Save
-                      </button>
+                      <Button value="Login" />
                     </div>
                   </form>
                 </div>

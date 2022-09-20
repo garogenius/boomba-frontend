@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import Button from "./components/button/Button";
 import Input from "./components/inputs/Input";
-import SubmitInput from "./components/inputs/SubmitInput";
 import Select from "./components/select/AccountType";
 const CreateUser = () => {
   const [inputValue, setInputValue] = useState({
@@ -148,7 +148,7 @@ const CreateUser = () => {
                       <div className="col-md-4"></div>
 
                       <div className="col-md-4 button">
-                        <SubmitInput name="create" value="Create Account" />
+                        <Button value="Create Account" />
                       </div>
                       <div className="col-md-4"></div>
                     </div>
