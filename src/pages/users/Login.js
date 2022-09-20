@@ -25,10 +25,7 @@ const Login = () => {
           <div className="row">
             <div className="col-lg-4"></div>
             <div className="col-lg-4">
-              <div
-                className="card border-primary rounded"
-                style={{ marginTop: "150px" }}
-              >
+              <div id="log" className="card border-primary rounded my-5">
                 <div className="card-body">
                   <h4 className="text-center text-dark">Login</h4>
                   <form method="" action="">
