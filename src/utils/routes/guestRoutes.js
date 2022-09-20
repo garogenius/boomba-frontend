@@ -1,4 +1,4 @@
-import Home from "../pages/guest/Home";
+import Home from "../../pages/guest/Home";
 
 let prefix = "";
 

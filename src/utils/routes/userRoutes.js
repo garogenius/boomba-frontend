@@ -12,6 +12,8 @@ import Staff from "../../pages/users/Staff";
 import Store from "../../pages/users/Store";
 import Supplier from "../../pages/users/Supplier";
 import CreateBusiness from "../../pages/users/CreateBusiness";
+import CreateUser from "../../pages/users/CreateUser";
+import VerifyUser from "../../pages/users/VerifyUser";
 
 let prefix = "";
 let routes = [
@@ -23,6 +25,16 @@ let routes = [
   {
     path: `${prefix}/login`,
     component: Login,
+    protected: false,
+  },
+  {
+    path: `${prefix}/register`,
+    component: CreateUser,
+    protected: false,
+  },
+  {
+    path: `${prefix}/verify-account`,
+    component: VerifyUser,
     protected: false,
   },
   {

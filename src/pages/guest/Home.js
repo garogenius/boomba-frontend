@@ -3,7 +3,10 @@ import { Link } from "react-router-dom";
 const Home = () => {
   return (
     <div>
-      <h1>Welcome to Boomba Inventory app</h1>
+      <h1>Welcome to Oxygen App</h1>
+      <p>
+        Login to your account <Link to="/login">Login</Link>
+      </p>
       <p>
         Go To <Link to="/dashboard">Dashboard</Link>{" "}
       </p>

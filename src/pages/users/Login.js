@@ -1,6 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import Input from "./components/inputs/Input";
 
 const Login = () => {
+  const [inputValue, setInputValue] = useState({
+    username: "",
+    password: "",
+  });
+  const { username, password } = inputValue;
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setInputValue((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+    console.log(inputValue);
+  };
   return (
     <div>
       <div className="wrapper bg-secondary">
@@ -15,34 +31,40 @@ const Login = () => {
                 <div className="card-body">
                   <h4 className="text-center text-dark">Login</h4>
                   <form method="" action="">
-                    <div className="form-group form-floating-label">
-                      <input
-                        id="inputFloatingLabel"
+                    <div className="">
+                      <Input
                         type="text"
-                        className="form-control input-border-bottom"
+                        value={username}
+                        placeholder="Username"
+                        label="Username"
+                        name="username"
+                        onChange={handleChange}
                         required
                       />
-                      <label
-                        for="inputFloatingLabel"
-                        className="placeholder px-2"
-                      >
-                        Email
-                      </label>
                     </div>
-                    <div className="form-group form-floating-label">
-                      <input
-                        id="inputFloatingLabel"
-                        type="text"
-                        className="form-control input-border-bottom"
+
+                    <div className="">
+                      <Input
+                        type="password"
+                        value={password}
+                        placeholder="Password"
+                        label="Password"
+                        name="password"
+                        onChange={handleChange}
                         required
                       />
-                      <label
-                        for="inputFloatingLabel"
-                        className="placeholder px-2"
-                      >
-                        Password
-                      </label>
                     </div>
+                    <div className="my-2">
+                      <div className="float-right text-sm">
+                        <Link to="/">Forget Password ?</Link>
+                      </div>
+                      <div className="">
+                        <Link className="" to="/register">
+                          Create Account
+                        </Link>
+                      </div>
+                    </div>
+
                     <div className="button">
                       <button className="btn btn-primary w-100 rounded">
                         Save

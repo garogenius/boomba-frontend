@@ -8,7 +8,7 @@ import {
   Redirect,
 } from "react-router-dom";
 import routes from "./utils/routes/userRoutes";
-import guestRoute from "./utils/guestRoutes";
+import guestRoute from "./utils/routes/guestRoutes";
 
 // import ProtectedRoute from "./ProtectedRoute";
 
