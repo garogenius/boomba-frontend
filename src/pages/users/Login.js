@@ -12,6 +12,7 @@ const Login = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    // alert(value);
     setInputValue((prev) => ({
       ...prev,
       [name]: value,
@@ -64,7 +65,7 @@ const Login = () => {
                     </div>
 
                     <div className="button">
-                      <Button value="Login" />
+                      <Button value="Login" type="error" onClick={()=>alert('Hello')} contain={true}/>
                     </div>
                   </form>
                 </div>
@@ -76,6 +77,6 @@ const Login = () => {
       </div>
     </div>
   );
+  
 };
-
 export default Login;

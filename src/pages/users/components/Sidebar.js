@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Profile from "../../../assets/img/profile.jpg";
 const Sidebar = () => {
   return (
-    <div>
+    <div className="nav">
       <div className="sidebar sidebar-style-2">
         <div className="sidebar-wrapper scrollbar scrollbar-inner">
           <div className="sidebar-content">

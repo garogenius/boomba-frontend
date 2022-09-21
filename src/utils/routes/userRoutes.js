@@ -14,12 +14,15 @@ import Supplier from "../../pages/users/Supplier";
 import CreateBusiness from "../../pages/users/CreateBusiness";
 import CreateUser from "../../pages/users/CreateUser";
 import VerifyUser from "../../pages/users/VerifyUser";
+import TestDashboard from "../../pages/users/TestDashboard";
+import AllStores from "../../pages/users/AllStores";
+import AddStore from "../../pages/users/AddStore";
 
 let prefix = "";
 let routes = [
   {
     path: `${prefix}/dashboard`,
-    component: Dashboard,
+    component: TestDashboard,
     protected: false,
   },
   {
@@ -84,7 +87,12 @@ let routes = [
   },
   {
     path: `${prefix}/store`,
-    component: Store,
+    component: AllStores,
+    protected: false,
+  },
+  {
+    path: `${prefix}/add-store`,
+    component: AddStore,
     protected: false,
   },
   {
