@@ -3,7 +3,7 @@ import React, { useState } from "react";
 const InputField = ({ label, value, myCHange, ...props }) => {
   const [changeVal, setChangeVal] = useState("");
   let handleChange = (cChange) => {
-    myCHange = cChange; 
+    myCHange = cChange;
   };
   return (
     <div className="form-group">

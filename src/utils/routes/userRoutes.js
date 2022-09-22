@@ -16,6 +16,8 @@ import VerifyUser from "../../pages/users/VerifyUser";
 import TestDashboard from "../../pages/users/TestDashboard";
 import AllStores from "../../pages/users/AllStores";
 import AddStore from "../../pages/users/AddStore";
+import AllResources from "../../pages/users/AllResources";
+import AddResource from "../../pages/users/AddResource";
 
 let prefix = "";
 let routes = [
@@ -87,6 +89,21 @@ let routes = [
   {
     path: `${prefix}/store`,
     component: Store,
+    protected: false,
+  },
+  {
+    path: `${prefix}/all-store`,
+    component: AllStores,
+    protected: false,
+  },
+  {
+    path: `${prefix}/all-resources`,
+    component: AllResources,
+    protected: false,
+  },
+  {
+    path: `${prefix}/add-resource`,
+    component: AddResource,
     protected: false,
   },
   {

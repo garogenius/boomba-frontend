@@ -89,6 +89,27 @@ const SideBar = () => {
               </div>
             </li>
             <li className="nav-item">
+              <Link data-toggle="collapse" to="/all-resources">
+                <i className="fas fa-store"></i>
+                <p>Resources</p>
+                <span className="caret"></span>
+              </Link>
+              <div className="collapse" id="sidebarLayouts">
+                <ul className="nav nav-collapse">
+                  <li>
+                    <Link to="sidebar-style-1.html">
+                      <span className="sub-item">View Product</span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="overlay-sidebar.html">
+                      <span className="sub-item">Add Product</span>
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li className="nav-item">
               <Link data-toggle="collapse" to="/all-branch">
                 <i class="fas fa-code-branch"></i>
                 <p>Branch</p>

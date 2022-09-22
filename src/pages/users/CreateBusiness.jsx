@@ -165,21 +165,16 @@ const CreateBusiness = () => {
                       </div>
                     </div>
 
-                    {/* <div className="my-2">
-                      <div className="text-center">
-                        <p>
-                          Already Registered{" "}
-                          <Link className="" to="/login">
-                            Login
-                          </Link>
-                        </p>
-                      </div>
-                    </div> */}
                     <div className="row">
                       <div className="col-md-4"></div>
 
-                      <div className="col-md-4 button">
-                        <Button value="Create Business" />
+                      <div className="col-md-4">
+                        <Button
+                          value="Create Account"
+                          type="error"
+                          // onClick={() => alert("Hello")}
+                          contain={true}
+                        />
                       </div>
                       <div className="col-md-4"></div>
                     </div>
