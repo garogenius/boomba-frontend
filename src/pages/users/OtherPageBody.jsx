@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import Footer from "./components/Footer";
 import NavBar from "./components/NavBar";
 import SideBar from "./components/SideBar";
-
-const SiteBody = ({ children }) => {
+const OtherPageBody = ({ children }) => {
   const [navOpen, setNavOpen] = useState(false);
   let nav = {
     open: "wf-flaticon-n4-inactive wf-lato-n7-inactive wf-lato-n3-inactive wf-lato-n4-inactive wf-fontawesome5solid-n4-active wf-fontawesome5regular-n4-active wf-simplelineicons-n4-active wf-fontawesome5brands-n4-active wf-lato-n9-inactive wf-active nav_open",
@@ -68,4 +67,4 @@ const SiteBody = ({ children }) => {
   );
 };
 
-export default SiteBody;
+export default OtherPageBody;

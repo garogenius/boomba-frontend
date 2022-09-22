@@ -1,106 +1,95 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Footer from "./components/Footer";
-import Navbar from "./components/Navbar";
-import Sidebar from "./components/Sidebar";
+import OtherPageBody from "../users/OtherPageBody";
 
 const Staff = () => {
   return (
-    <div>
-      <div className="wrapper">
-        <Navbar />
-        <Sidebar />
-        <div className="main-panel">
-          <div className="content">
-            <div className="page-inner">
-              <div className="page-header">
-                <h4 className="page-title">Staff</h4>
-                <ul className="breadcrumbs">
-                  <li className="nav-home">
-                    <a href="/">
-                      <i className="flaticon-user"></i>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <div className="row">
-                <div className="col-md-12">
-                  <div className="card">
-                    <div className="card-header">
-                      <div className="d-flex align-items-center">
-                        <h4 className="card-title">Staff Lists</h4>
-                        <button className="btn btn-primary btn-round ml-auto">
-                          <i className="fa fa-plus"></i>
-                          <Link
-                            className="btn btn-primary btn-round ml-auto"
-                            to="/add-staff"
-                          >
-                            Add Staff
-                          </Link>
-                        </button>
-                      </div>
-                    </div>
-                    <div className="card-body">
-                      <div className="table-responsive">
-                        <table
-                          id="add-row"
-                          className="display table table-striped table-hover"
-                        >
-                          <thead>
-                            <tr>
-                              <th>S/n</th>
-                              <th>Name</th>
-                              <th>Role</th>
-                              <th>Branch</th>
-                              <th>Date Added</th>
-                              <th style={{ width: "10%" }}>Action</th>
-                            </tr>
-                          </thead>
-
-                          <tbody>
-                            <tr>
-                              <td>1</td>
-                              <td>Garzali Ahmad</td>
-                              <td>Business manager</td>
-                              <td>Garo branch</td>
-
-                              <td>9/09/2022</td>
-                              <td>
-                                <div className="form-button-action">
-                                  <button
-                                    type="button"
-                                    data-toggle="tooltip"
-                                    title=""
-                                    className="btn btn-link btn-primary btn-lg"
-                                    data-original-title="Edit Task"
-                                  >
-                                    <i className="fa fa-edit"></i>
-                                  </button>
-                                  <button
-                                    type="button"
-                                    data-toggle="tooltip"
-                                    title=""
-                                    className="btn btn-link btn-danger"
-                                    data-original-title="Remove"
-                                  >
-                                    <i className="fa fa-times"></i>
-                                  </button>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
+    <OtherPageBody>
+      <div className="page-inner">
+        <div className="page-header">
+          <h4 className="page-title">Staff</h4>
+          <ul className="breadcrumbs">
+            <li className="nav-home">
+              <a href="/">
+                <i className="flaticon-user"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div className="row">
+          <div className="col-md-12">
+            <div className="card">
+              <div className="card-header">
+                <div className="d-flex align-items-center">
+                  <h4 className="card-title">Staff Lists</h4>
+                  <button className="btn btn-primary btn-round ml-auto">
+                    <i className="fa fa-plus"></i>
+                    <Link
+                      className="btn btn-primary btn-round ml-auto"
+                      to="/add-staff"
+                    >
+                      Add Staff
+                    </Link>
+                  </button>
                 </div>
               </div>
-              <Footer />
+              <div className="card-body">
+                <div className="table-responsive">
+                  <table
+                    id="add-row"
+                    className="display table table-striped table-hover"
+                  >
+                    <thead>
+                      <tr>
+                        <th>S/n</th>
+                        <th>Name</th>
+                        <th>Role</th>
+                        <th>Branch</th>
+                        <th>Date Added</th>
+                        <th style={{ width: "10%" }}>Action</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td>Garzali Ahmad</td>
+                        <td>Business manager</td>
+                        <td>Garo branch</td>
+
+                        <td>9/09/2022</td>
+                        <td>
+                          <div className="form-button-action">
+                            <button
+                              type="button"
+                              data-toggle="tooltip"
+                              title=""
+                              className="btn btn-link btn-primary btn-lg"
+                              data-original-title="Edit Task"
+                            >
+                              <i className="fa fa-edit"></i>
+                            </button>
+                            <button
+                              type="button"
+                              data-toggle="tooltip"
+                              title=""
+                              className="btn btn-link btn-danger"
+                              data-original-title="Remove"
+                            >
+                              <i className="fa fa-times"></i>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </OtherPageBody>
   );
 };
 

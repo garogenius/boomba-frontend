@@ -1,4 +1,3 @@
-import Dashboard from "../../pages/users/Dashboard";
 import Login from "../../pages/users/Login";
 import AddProduct from "../../pages/users/AddProduct";
 import AddStaff from "../../pages/users/AddStaff";
@@ -87,7 +86,7 @@ let routes = [
   },
   {
     path: `${prefix}/store`,
-    component: AllStores,
+    component: Store,
     protected: false,
   },
   {

@@ -1,9 +1,4 @@
 import React, { useState } from "react";
-import AddStore from "./AddStore";
-import AllStores from "./AllStores";
-import Footer from "./components/Footer";
-import NavBar from "./components/NavBar";
-import SideBar from "./components/SideBar";
 import DashBody from "./DashBody";
 import SiteBody from "./SiteBody";
 
@@ -20,7 +15,7 @@ const TestDashboard = () => {
   };
   return (
     <SiteBody>
-      <DashBody/>
+      <DashBody />
     </SiteBody>
   );
 };
