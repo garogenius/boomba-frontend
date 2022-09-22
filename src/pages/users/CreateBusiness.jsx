@@ -35,22 +35,20 @@ const CreateBusiness = () => {
   };
   const createBusiness = (e) => {
     e.preventDefault();
-    auth
-      .registerUser(business)
-      .then((result) => {
-        if (result.data.success) {
-          toast.success(result.data.message);
-          setTimeout(() => {
-            // window.location = "/verify";
-          }, 500);
-        } else {
-          alert(result.data.message);
-          toast.error(result.data.message);
-        }
-      })
-      .catch((e) => {
-        toast.error(e.message);
-      });
+    auth.registerUser(business).then((result) => {
+      if (result.data.success) {
+        toast.success(result.data.message);
+        setTimeout(() => {
+          // window.location = "/verify";
+        }, 500);
+      } else {
+        alert(result.data.message);
+        toast.error(result.data.message);
+      }
+    });
+    // .catch((e) => {
+    //   toast.error(e.message);
+    // });
   };
 
   return (
