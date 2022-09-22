@@ -407,7 +407,7 @@ const DashBody = () => {
                       Sep 25
                     </time>
                     <span class="text">
-                      Responded to need <a href="#">"Volunteer opportunity"</a>
+                      Responded to need <a href="/">"Volunteer opportunity"</a>
                     </span>
                   </li>
                   <li class="feed-item feed-item-success">
@@ -415,7 +415,7 @@ const DashBody = () => {
                       Sep 24
                     </time>
                     <span class="text">
-                      Added an interest <a href="#">"Volunteer Activities"</a>
+                      Added an interest <a href="/">"Volunteer Activities"</a>
                     </span>
                   </li>
                   <li class="feed-item feed-item-info">
@@ -432,7 +432,7 @@ const DashBody = () => {
                       Sep 21
                     </time>
                     <span class="text">
-                      Responded to need <a href="#">"In-Kind Opportunity"</a>
+                      Responded to need <a href="/">"In-Kind Opportunity"</a>
                     </span>
                   </li>
                   <li class="feed-item feed-item-danger">
@@ -440,7 +440,7 @@ const DashBody = () => {
                       Sep 18
                     </time>
                     <span class="text">
-                      Created need <a href="#">"Volunteer Opportunity"</a>
+                      Created need <a href="/">"Volunteer Opportunity"</a>
                     </span>
                   </li>
                   <li class="feed-item">

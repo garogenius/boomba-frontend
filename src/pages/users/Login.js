@@ -65,7 +65,12 @@ const Login = () => {
                     </div>
 
                     <div className="button">
-                      <Button value="Login" type="error" onClick={()=>alert('Hello')} contain={true}/>
+                      <Button
+                        value="Login"
+                        type="error"
+                        // onClick={() => alert("Hello")}
+                        contain={true}
+                      />
                     </div>
                   </form>
                 </div>
@@ -77,6 +82,5 @@ const Login = () => {
       </div>
     </div>
   );
-  
 };
 export default Login;

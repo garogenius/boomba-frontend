@@ -3,6 +3,7 @@ import InputField from "./components/inputs/InputField";
 import Button from "./components/button/Button";
 import Select from "./components/select/AccountType";
 import BusinessType from "./components/select/BusinessType";
+import BusinessTarget from "./components/select/BusinessTarget";
 const CreateBusiness = () => {
   const [inputValue, setInputValue] = useState({
     name: "",
@@ -112,15 +113,14 @@ const CreateBusiness = () => {
                           />
                         </div>
                         <div class="col-md-4">
-                          <InputField
-                            type="text"
+                          <BusinessTarget
                             value={businessTarget}
-                            placeholder="Business Target"
-                            label="businessTarget"
+                            label="Business Target"
                             name="businessTarget"
                             onChange={handleChange}
                           />
                         </div>
+
                         <div class="col-md-4">
                           <InputField
                             type="text"

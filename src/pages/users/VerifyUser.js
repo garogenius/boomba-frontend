@@ -52,7 +52,12 @@ const VerifyUser = () => {
                     </div>
 
                     <div className="button">
-                      <Button value="Verify Account" />
+                      <Button
+                        value="Verify Account"
+                        type="error"
+                        // onClick={() => alert("Hello")}
+                        contain={true}
+                      />
                     </div>
                   </form>
                 </div>

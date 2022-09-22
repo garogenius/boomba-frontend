@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { PropTypes } from "prop-types";
 
 const Button = ({
@@ -14,7 +14,7 @@ const Button = ({
       <button
         {...props}
         className={
-          "btn btn-" +
+          "w-100 btn btn-" +
           (type == "success"
             ? "success"
             : type == "error" || type == "danger"
@@ -36,7 +36,7 @@ const Button = ({
 };
 
 Button.propTypes = {
-  //// key is the name of the prop and
+  // key is the name of the prop and
   // value is the PropType
   contain: PropTypes.bool,
   isLoading: PropTypes.bool,

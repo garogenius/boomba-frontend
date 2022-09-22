@@ -9,7 +9,7 @@ const AddStore = () => {
           <h4 class="page-title">Forms</h4>
           <ul class="breadcrumbs">
             <li class="nav-home">
-              <a href="#">
+              <a href="/">
                 <i class="flaticon-home"></i>
               </a>
             </li>
@@ -17,7 +17,7 @@ const AddStore = () => {
               <i class="flaticon-right-arrow"></i>
             </li>
             <li class="nav-item">
-              <a href="#">Forms</a>
+              <a href="/">Forms</a>
             </li>
             <li class="separator">
               <i class="flaticon-right-arrow"></i>

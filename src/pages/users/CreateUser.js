@@ -147,8 +147,13 @@ const CreateUser = () => {
                     <div className="row">
                       <div className="col-md-4"></div>
 
-                      <div className="col-md-4 button">
-                        <Button value="Create Account" />
+                      <div className="col-md-4">
+                        <Button
+                          value="Create Account"
+                          type="error"
+                          // onClick={() => alert("Hello")}
+                          contain={true}
+                        />
                       </div>
                       <div className="col-md-4"></div>
                     </div>

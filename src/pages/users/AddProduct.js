@@ -1,13 +1,9 @@
 import React from "react";
-import Footer from "./components/Footer";
-import Navbar from "./components/Navbar";
-import Sidebar from "./components/Sidebar";
+import SiteBody from "../users/SiteBody";
 const AddProduct = () => {
   return (
-    <div>
+    <SiteBody>
       <div className="wrapper">
-        <Navbar />
-        <Sidebar />
         <div className="main-panel">
           <div className="content">
             <div className="page-inner">
@@ -137,12 +133,11 @@ const AddProduct = () => {
                 </div>
                 <div className="col-xl-4"></div>
               </div>
-              <Footer />
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </SiteBody>
   );
 };
 
