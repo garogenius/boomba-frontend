@@ -43,6 +43,7 @@ const VerifyUser = () => {
   return (
     <div>
       <div className="wrapper bg-secondary">
+        <ToastContainer />
         <div className="container">
           <div className="row">
             <div className="col-lg-4"></div>

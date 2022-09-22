@@ -26,7 +26,7 @@ const CreateUser = () => {
       .then((result) => {
         if (result.data.success) {
           toast.success(result.data.message);
-          localStorage.setItem("userToken", result.data.token);
+
           setTimeout(() => {
             window.location = "/verify";
           }, 500);
@@ -41,8 +41,8 @@ const CreateUser = () => {
   return (
     <div>
       <div className="bg-secondary">
+        <ToastContainer />
         <div className="container">
-          <ToastContainer />
           <div className="row">
             <div className="col-lg-12 my-5" style={{ marginTop: "" }}>
               <div className="card border-primary rounded">

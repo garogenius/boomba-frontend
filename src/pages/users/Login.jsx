@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "./components/button/Button";
 import InputField from "./components/inputs/InputField";
-
+import { auth } from "../../Service/authentication";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const Login = () => {
   const [inputValue, setInputValue] = useState({
     username: "",
@@ -17,11 +19,34 @@ const Login = () => {
       ...prev,
       [name]: value,
     }));
-    console.log(inputValue);
+  };
+  const login = (e) => {
+    e.preventDefault();
+    if (inputValue.username != "" && inputValue.password) {
+      auth
+        .userLogin(inputValue)
+        .then((result) => {
+          if (result.data.success) {
+            localStorage.setItem("token", result.data.access_token);
+            toast.success(result.data.message);
+            setTimeout(() => {
+              window.location = "/dashboard";
+            }, 500);
+          } else {
+            toast.error(result.data.message);
+          }
+        })
+        .catch((e) => {
+          toast.error(e.message);
+        });
+    } else {
+      toast.error("Field cannot be empty..!");
+    }
   };
   return (
     <div>
       <div className="wrapper bg-secondary">
+        <ToastContainer />
         <div className="container">
           <div className="row">
             <div className="col-lg-4"></div>
@@ -29,7 +54,7 @@ const Login = () => {
               <div id="log" className="card border-primary rounded my-5">
                 <div className="card-body">
                   <h4 className="text-center text-dark">Login</h4>
-                  <form method="" action="">
+                  <form method="post" action="" onSubmit={login}>
                     <div className="">
                       <InputField
                         type="text"
@@ -68,6 +93,7 @@ const Login = () => {
                       <Button
                         value="Login"
                         type="error"
+                        name="submit"
                         // onClick={() => alert("Hello")}
                         contain={true}
                       />
