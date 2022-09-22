@@ -3,8 +3,11 @@ import { Link } from "react-router-dom";
 import Button from "./components/button/Button";
 import InputField from "./components/inputs/InputField";
 import Select from "./components/select/AccountType";
+import { auth } from "../../Service/authentication";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const CreateUser = () => {
-  const [inputValue, setInputValue] = useState({
+  const [user, setUser] = useState({
     name: "",
     phone: "",
     email: "",
@@ -15,120 +18,167 @@ const CreateUser = () => {
     password: "",
     AccountType: "",
   });
-  const { name, phone, email, nin, state, lga, street, AccountType, password } =
-    inputValue;
+  // const {
+  //   name,
+  //   phoneNumber,
+  //   emailAddress,
+  //   nin,
+  //   state,
+  //   lga,
+  //   street,
+  //   accountType,
+  //   password,
+  // } = user;
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setInputValue((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-    console.log(inputValue);
+  // const handleChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setUser((prev) => ({
+  //     ...prev,
+  //     [name]: value,
+  //   }));
+  // };
+  const create = (e) => {
+    e.preventDefault();
+    auth
+      .registerUser(user)
+      .then((result) => {
+        console.log(user);
+        if (result.data.success) {
+          toast.success(result.data.message);
+          localStorage.setItem("userToken", result.data.token);
+          setTimeout(() => {
+            window.location = "/verify";
+          }, 500);
+        } else {
+          toast.error(result.data.message);
+        }
+      })
+      .catch((e) => {
+        toast.error(e.message);
+      });
   };
   return (
     <div>
       <div className="bg-secondary">
         <div className="container">
+          <ToastContainer />
           <div className="row">
             <div className="col-lg-12 my-5" style={{ marginTop: "" }}>
               <div className="card border-primary rounded">
                 <div className="card-body">
                   <h4 className="text-center text-dark">Create Account</h4>
-                  <form method="" action="">
+                  <form method="post" action="" onSubmit={create}>
                     <div className="container-fluid">
                       <div className="row">
                         <div class="col-md-4">
                           <InputField
                             type="text"
-                            value={name}
+                            value={user.name}
                             placeholder="Name"
                             label="Name"
                             name="name"
-                            onChange={handleChange}
+                            onChange={(e) =>
+                              setUser({ ...user, name: e.target.value })
+                            }
                             required
                           />
                         </div>
                         <div class="col-md-4">
                           <InputField
                             type="email"
-                            value={email}
+                            value={user.emailAddress}
                             placeholder="email"
                             label="Email"
                             name="email"
-                            onChange={handleChange}
+                            onChange={(e) =>
+                              setUser({ ...user, emailAddress: e.target.value })
+                            }
                             required
                           />
                         </div>
                         <div class="col-md-4">
                           <InputField
                             type="text"
-                            value={phone}
+                            value={user.phoneNumber}
                             placeholder="Phone"
                             label="Phone"
                             name="phone"
-                            onChange={handleChange}
+                            onChange={(e) =>
+                              setUser({ ...user, phoneNumber: e.target.value })
+                            }
                             required
                           />
                         </div>
                         <div class="col-md-4">
                           <InputField
                             type="text"
-                            value={nin}
+                            value={user.nin}
                             placeholder="Nin No"
                             label="nin"
                             name="nin-no"
-                            onChange={handleChange}
+                            onChange={(e) =>
+                              setUser({ ...user, nin: e.target.value })
+                            }
                             required
                           />
                         </div>
                         <div class="col-md-4">
                           <Select
-                            value={AccountType}
+                            value={user.accountType}
                             label="Account Type"
                             name="AccountType"
-                            onChange={handleChange}
+                            onChange={(e) =>
+                              setUser({ ...user, accountType: e.target.value })
+                            }
                           />
                         </div>
                         <div class="col-md-4">
                           <InputField
                             type="text"
-                            value={state}
+                            value={user.state}
                             placeholder="state"
                             label="state"
                             name="state"
-                            onChange={handleChange}
+                            onChange={(e) =>
+                              setUser({ ...user, state: e.target.value })
+                            }
                           />
                         </div>
                         <div class="col-md-4">
                           <InputField
                             type="text"
-                            value={lga}
+                            value={user.lga}
                             placeholder="Local Govt"
                             label="lga"
                             name="lga"
-                            onChange={handleChange}
+                            onChange={(e) =>
+                              setUser({ ...user, lga: e.target.value })
+                            }
                           />
                         </div>
                         <div class="col-md-4">
                           <InputField
                             type="text"
-                            value={street}
+                            value={user.street}
                             placeholder="street"
                             label="street"
                             name="street"
-                            onChange={handleChange}
+                            onChange={(e) =>
+                              setUser({ ...user, street: e.target.value })
+                            }
                           />
                         </div>
 
                         <div class="col-md-4">
                           <InputField
                             type="password"
-                            value={password}
+                            value={user.password}
                             placeholder="password"
                             label="password"
                             name="password"
-                            onChange={handleChange}
+                            onChange={(e) =>
+                              setUser({ ...user, password: e.target.value })
+                            }
                           />
                         </div>
                       </div>
@@ -151,6 +201,7 @@ const CreateUser = () => {
                         <Button
                           value="Create Account"
                           type="error"
+                          name="submit"
                           // onClick={() => alert("Hello")}
                           contain={true}
                         />

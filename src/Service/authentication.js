@@ -1,12 +1,12 @@
 import axios from "axios";
-import { endPoint } from "../utils/constants";
+import { endPoint } from "../utils/constants/constants";
 
 let auth = {
   registerUser: async (body) => {
     let data = JSON.stringify(body);
-    const result = await axios.post(endPoint + "/user", data, {
+    const result = await axios.post(endPoint + "user", data, {
       headers: {
-        authorization: "",
+        // authorization: "",
         "Content-Type": "application/json",
       },
     });
@@ -16,9 +16,9 @@ let auth = {
   },
   registerBusiness: async (body) => {
     let data = JSON.stringify(body);
-    const result = await axios.post(endPoint + "/user", data, {
+    const result = await axios.post(endPoint + "user", data, {
       headers: {
-        authorization: "",
+        // authorization: "",
         "Content-Type": "application/json",
       },
     });

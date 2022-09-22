@@ -14,10 +14,10 @@ const AccountType = ({ value, label, name, onChange }) => (
         Account type
       </option>
       <option value={value} onChange={onChange}>
-        Individual
+        INDIVIDUAL
       </option>
       <option value={value} onChange={onChange}>
-        Business
+        BUSINESS
       </option>
     </select>
   </div>
