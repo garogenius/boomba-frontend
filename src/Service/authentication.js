@@ -14,9 +14,9 @@ let auth = {
 
     return result;
   },
-  registerBusiness: async (body) => {
+  verifyAccount: async (body) => {
     let data = JSON.stringify(body);
-    const result = await axios.post(endPoint + "user", data, {
+    const result = await axios.post(endPoint + "user/verify", data, {
       headers: {
         // authorization: "",
         "Content-Type": "application/json",

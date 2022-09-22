@@ -1,165 +1,232 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import InputField from "./components/inputs/InputField";
 import Button from "./components/button/Button";
 import Select from "./components/select/AccountType";
-import BusinessType from "./components/select/BusinessType";
+// import BusinessType from "./components/select/BusinessType";
 import BusinessTarget from "./components/select/BusinessTarget";
+import { auth } from "../../Service/authentication";
+import { ToastContainer, toast } from "react-toastify";
+import { userService } from "../../Service/user.Service";
 const CreateBusiness = () => {
-  const [inputValue, setInputValue] = useState({
+  const [busType, setBusType] = useState([]);
+
+  const [business, setBusiness] = useState({
     name: "",
-    phone: "",
-    email: "",
-    reqNo: "",
+    phoneNumber: "",
+    emailAddress: "",
+    reqNumber: "",
     state: "",
     lga: "",
     street: "",
     password: "",
-    AccountType: "",
+    accountType: "",
     businessType: "",
     businessTarget: "",
   });
-  const {
-    name,
-    phone,
-    email,
-    reqNo,
-    state,
-    lga,
-    street,
-    AccountType,
-    businessType,
-    businessTarget,
-    password,
-  } = inputValue;
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setInputValue((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-    console.log(inputValue);
+  useEffect(() => {
+    getAllBusinessType();
+  }, []);
+  let getAllBusinessType = () => {
+    userService.getAllBusinessType(15).then((result) => {
+      alert(JSON.stringify(result.data));
+      setBusType(result.data);
+    });
   };
+  const createBusiness = (e) => {
+    e.preventDefault();
+    auth
+      .registerUser(business)
+      .then((result) => {
+        if (result.data.success) {
+          toast.success(result.data.message);
+          setTimeout(() => {
+            window.location = "/verify";
+          }, 500);
+        } else {
+          toast.error(result.data.message);
+        }
+      })
+      .catch((e) => {
+        toast.error(e.message);
+      });
+  };
+
   return (
     <div>
       <div className="bg-secondary">
         <div className="container">
+          <ToastContainer />
           <div className="row">
             <div className="col-lg-12 my-5">
               <div className="card border-primary rounded">
                 <div className="card-body">
                   <h4 className="text-center text-dark">Create Business</h4>
-                  <form method="" action="">
+                  <form method="post" onClick={createBusiness} action="">
                     <div className="container-fluid">
                       <div className="row">
                         <div class="col-md-4">
                           <InputField
                             type="text"
-                            value={name}
+                            value={business.name}
                             placeholder="Name"
                             label="Name"
                             name="name"
-                            onChange={handleChange}
+                            onChange={(e) =>
+                              setBusiness({ ...business, name: e.target.value })
+                            }
                             required
                           />
                         </div>
                         <div class="col-md-4">
                           <InputField
                             type="email"
-                            value={email}
+                            value={business.emailAddress}
                             placeholder="email"
                             label="Email"
                             name="email"
-                            onChange={handleChange}
+                            onChange={(e) =>
+                              setBusiness({
+                                ...business,
+                                emailAddress: e.target.value,
+                              })
+                            }
                             required
                           />
                         </div>
                         <div class="col-md-4">
                           <InputField
                             type="text"
-                            value={phone}
+                            value={business.phoneNumber}
                             placeholder="Phone"
                             label="Phone"
                             name="phone"
-                            onChange={handleChange}
+                            onChange={(e) =>
+                              setBusiness({
+                                ...business,
+                                phoneNumber: e.target.value,
+                              })
+                            }
                             required
                           />
                         </div>
                         <div class="col-md-4">
                           <InputField
                             type="text"
-                            value={reqNo}
+                            value={business.reqNumber}
                             placeholder="Registration No"
                             label="reqNo"
                             name="reqNo"
-                            onChange={handleChange}
+                            onChange={(e) =>
+                              setBusiness({
+                                ...business,
+                                reqNumber: e.target.value,
+                              })
+                            }
                             required
                           />
                         </div>
                         <div class="col-md-4">
                           <Select
-                            value={AccountType}
+                            value={business.accountType}
                             label="Account Type"
                             name="AccountType"
-                            onChange={handleChange}
+                            onChange={(e) =>
+                              setBusiness({
+                                ...business,
+                                accountType: e.target.value,
+                              })
+                            }
                           />
                         </div>
-                        <div class="col-md-4">
-                          <BusinessType
-                            value={businessType}
-                            label="Business Type"
-                            name="businessType"
-                            onChange={handleChange}
-                          />
+                        <div className="col-md-4 form-group">
+                          <label htmlFor="input-field">Business Type</label>
+                          <select
+                            value={business.businessType}
+                            name="bisnessType"
+                            className="form-control"
+                            id="exampleFormControlSelect1"
+                            onChange={(e) =>
+                              setBusiness({
+                                ...business,
+                                businessType: e.target.value,
+                              })
+                            }
+                          >
+                            {busType.map((bus) => {
+                              return <option value={bus}>{bus}</option>;
+                            })}
+                          </select>
                         </div>
                         <div class="col-md-4">
                           <BusinessTarget
-                            value={businessTarget}
+                            value={business.businessTarget}
                             label="Business Target"
                             name="businessTarget"
-                            onChange={handleChange}
+                            onChange={(e) =>
+                              setBusiness({
+                                ...business,
+                                businessTarget: e.target.value,
+                              })
+                            }
                           />
                         </div>
 
                         <div class="col-md-4">
                           <InputField
                             type="text"
-                            value={state}
+                            value={business.state}
                             placeholder="state"
                             label="state"
                             name="state"
-                            onChange={handleChange}
+                            onChange={(e) =>
+                              setBusiness({
+                                ...business,
+                                state: e.target.value,
+                              })
+                            }
                           />
                         </div>
                         <div class="col-md-4">
                           <InputField
                             type="text"
-                            value={lga}
+                            value={business.lga}
                             placeholder="Local Govt"
                             label="lga"
                             name="lga"
-                            onChange={handleChange}
+                            onChange={(e) =>
+                              setBusiness({ ...business, lga: e.target.value })
+                            }
                           />
                         </div>
                         <div class="col-md-4">
                           <InputField
                             type="text"
-                            value={street}
+                            value={business.street}
                             placeholder="street"
                             label="street"
                             name="street"
-                            onChange={handleChange}
+                            onChange={(e) =>
+                              setBusiness({
+                                ...business,
+                                street: e.target.value,
+                              })
+                            }
                           />
                         </div>
 
                         <div class="col-md-4">
                           <InputField
                             type="password"
-                            value={password}
+                            value={business.password}
                             placeholder="password"
                             label="password"
                             name="password"
-                            onChange={handleChange}
+                            onChange={(e) =>
+                              setBusiness({
+                                ...business,
+                                password: e.target.value,
+                              })
+                            }
                           />
                         </div>
                       </div>
@@ -172,6 +239,7 @@ const CreateBusiness = () => {
                         <Button
                           value="Create Account"
                           type="error"
+                          name="submit"
                           // onClick={() => alert("Hello")}
                           contain={true}
                         />

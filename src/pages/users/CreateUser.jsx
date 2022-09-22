@@ -9,40 +9,21 @@ import "react-toastify/dist/ReactToastify.css";
 const CreateUser = () => {
   const [user, setUser] = useState({
     name: "",
-    phone: "",
-    email: "",
+    phoneNumber: "",
+    emailAddress: "",
     nin: "",
     state: "",
     lga: "",
     street: "",
     password: "",
-    AccountType: "",
+    accountType: "",
   });
-  // const {
-  //   name,
-  //   phoneNumber,
-  //   emailAddress,
-  //   nin,
-  //   state,
-  //   lga,
-  //   street,
-  //   accountType,
-  //   password,
-  // } = user;
 
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setUser((prev) => ({
-  //     ...prev,
-  //     [name]: value,
-  //   }));
-  // };
   const create = (e) => {
     e.preventDefault();
     auth
       .registerUser(user)
       .then((result) => {
-        console.log(user);
         if (result.data.success) {
           toast.success(result.data.message);
           localStorage.setItem("userToken", result.data.token);

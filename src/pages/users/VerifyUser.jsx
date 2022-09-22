@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import Button from "./components/button/Button";
 import InputField from "./components/inputs/InputField";
+import { auth } from "../../Service/authentication";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const VerifyUser = () => {
   const [inputValue, setInputValue] = useState({
-    phone: "",
+    phoneNumber: "",
     otp: "",
   });
-  const { phone, otp } = inputValue;
+  const { phoneNumber, otp } = inputValue;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -14,7 +17,28 @@ const VerifyUser = () => {
       ...prev,
       [name]: value,
     }));
-    console.log(inputValue);
+  };
+  const verify = (e) => {
+    e.preventDefault();
+    if (inputValue.phoneNumber != "" && inputValue.otp) {
+      auth
+        .verifyAccount(inputValue)
+        .then((result) => {
+          if (result.data.success) {
+            toast.success(result.data.message);
+            setTimeout(() => {
+              window.location = "/login";
+            }, 500);
+          } else {
+            toast.error(result.data.message);
+          }
+        })
+        .catch((e) => {
+          toast.error(e.message);
+        });
+    } else {
+      toast.error("fields cannot be empty");
+    }
   };
   return (
     <div>
@@ -26,14 +50,14 @@ const VerifyUser = () => {
               <div id="log" className="card border-primary rounded my-5">
                 <div className="card-body">
                   <h4 className="text-center text-dark">Verify Account</h4>
-                  <form method="" action="">
+                  <form method="post" action="" onSubmit={verify}>
                     <div className="">
                       <InputField
                         type="text"
-                        value={phone}
+                        value={phoneNumber}
                         placeholder="phone"
                         label="phone"
-                        name="phone"
+                        name="phoneNumber"
                         onChange={handleChange}
                         required
                       />
@@ -55,6 +79,7 @@ const VerifyUser = () => {
                       <Button
                         value="Verify Account"
                         type="error"
+                        name="submit"
                         // onClick={() => alert("Hello")}
                         contain={true}
                       />

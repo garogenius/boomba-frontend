@@ -1,5 +1,7 @@
-import React from "react";
-
+import React, { useState, useEffect } from "react";
+import { userService } from "../../../../Service/user.Service";
+// const [businessType, setBusinessType] = useState([]);
+// useEffect(() => {});
 const BusinessType = ({ value, label, name, onChange }) => (
   <div className="form-group">
     {label && <label htmlFor="input-field">{label}</label>}
