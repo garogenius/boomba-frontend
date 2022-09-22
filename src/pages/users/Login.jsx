@@ -22,6 +22,7 @@ const Login = () => {
   };
   const login = (e) => {
     e.preventDefault();
+    // alert(JSON.stringify(inputValue));
     if (inputValue.username != "" && inputValue.password) {
       auth
         .userLogin(inputValue)
@@ -37,6 +38,7 @@ const Login = () => {
           }
         })
         .catch((e) => {
+          // alert(JSON.stringify(e))
           toast.error(e.message);
         });
     } else {

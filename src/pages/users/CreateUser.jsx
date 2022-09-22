@@ -35,6 +35,7 @@ const CreateUser = () => {
         }
       })
       .catch((e) => {
+        alert(JSON.stringify(e))
         toast.error(e.message);
       });
   };

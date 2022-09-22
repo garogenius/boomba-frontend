@@ -7,6 +7,7 @@ import BusinessTarget from "./components/select/BusinessTarget";
 import { auth } from "../../Service/authentication";
 import { ToastContainer, toast } from "react-toastify";
 import { userService } from "../../Service/user.Service";
+import BusinessType from "./components/select/BusinessType";
 const CreateBusiness = () => {
   const [busType, setBusType] = useState([]);
 
@@ -28,8 +29,8 @@ const CreateBusiness = () => {
   }, []);
   let getAllBusinessType = () => {
     userService.getAllBusinessType(15).then((result) => {
-      alert(JSON.stringify(result.data));
-      setBusType(result.data);
+      // alert(JSON.stringify(result.data.data));
+      setBusType(result.data.data);
     });
   };
   const createBusiness = (e) => {
@@ -140,22 +141,20 @@ const CreateBusiness = () => {
                         </div>
                         <div className="col-md-4 form-group">
                           <label htmlFor="input-field">Business Type</label>
-                          <select
+                          <BusinessType
                             value={business.businessType}
-                            name="bisnessType"
-                            className="form-control"
-                            id="exampleFormControlSelect1"
-                            onChange={(e) =>
+                            name="bisnessType" onChange={(e) =>
                               setBusiness({
                                 ...business,
                                 businessType: e.target.value,
                               })
-                            }
-                          >
+                            }>
+                            <option value={''} selected>-- Choose Type --</option> 
                             {busType.map((bus) => {
-                              return <option value={bus}>{bus}</option>;
+                              return (<option value={bus._id}>{bus.title}</option>);
                             })}
-                          </select>
+                          </BusinessType>
+                            
                         </div>
                         <div class="col-md-4">
                           <BusinessTarget
