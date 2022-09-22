@@ -28,14 +28,13 @@ const CreateUser = () => {
           toast.success(result.data.message);
 
           setTimeout(() => {
-            window.location = "/verify";
+            // window.location = "/verify";
           }, 500);
         } else {
           toast.error(result.data.message);
         }
       })
       .catch((e) => {
-        alert(JSON.stringify(e))
         toast.error(e.message);
       });
   };

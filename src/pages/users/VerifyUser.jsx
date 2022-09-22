@@ -27,7 +27,7 @@ const VerifyUser = () => {
           if (result.data.success) {
             toast.success(result.data.message);
             setTimeout(() => {
-              window.location = "/login";
+              // window.location = "/login";
             }, 500);
           } else {
             toast.error(result.data.message);

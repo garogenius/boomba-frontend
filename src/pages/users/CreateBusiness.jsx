@@ -41,9 +41,10 @@ const CreateBusiness = () => {
         if (result.data.success) {
           toast.success(result.data.message);
           setTimeout(() => {
-            window.location = "/verify";
+            // window.location = "/verify";
           }, 500);
         } else {
+          alert(result.data.message);
           toast.error(result.data.message);
         }
       })
@@ -143,18 +144,23 @@ const CreateBusiness = () => {
                           <label htmlFor="input-field">Business Type</label>
                           <BusinessType
                             value={business.businessType}
-                            name="bisnessType" onChange={(e) =>
+                            name="bisnessType"
+                            onChange={(e) =>
                               setBusiness({
                                 ...business,
                                 businessType: e.target.value,
                               })
-                            }>
-                            <option value={''} selected>-- Choose Type --</option> 
+                            }
+                          >
+                            <option value={""} selected>
+                              -- Choose Type --
+                            </option>
                             {busType.map((bus) => {
-                              return (<option value={bus._id}>{bus.title}</option>);
+                              return (
+                                <option value={bus._id}>{bus.title}</option>
+                              );
                             })}
                           </BusinessType>
-                            
                         </div>
                         <div class="col-md-4">
                           <BusinessTarget

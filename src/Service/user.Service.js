@@ -5,7 +5,7 @@ let userService = {
   getAllBusinessType: async () => {
     const result = await axios.get(endPoint + "business-type", {
       headers: {
-        authorization: "",
+        // authorization: "",
         "Content-Type": "application/json",
       },
     });
