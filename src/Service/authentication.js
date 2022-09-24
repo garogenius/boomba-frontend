@@ -15,7 +15,7 @@ let auth = {
     return result;
   },
   verifyAccount: async (body) => {
-    let data = JSON.stringify(body);
+    let data = JSON.parse(body);
     const result = await axios.post(endPoint + "user/verify", data, {
       headers: {
         // authorization: "",
@@ -26,11 +26,10 @@ let auth = {
     return result;
   },
   userLogin: async (body) => {
-    let data = JSON.stringify(body);
-    const result = await axios.post(endPoint + "auth/login", data, {
+    const result = await axios.post(endPoint + "auth/login", body, {
       headers: {
-        // authorization: "",
-        "Content-Type": "apllication/json",
+        "Content-Type": "application/json; charset=utf-8",
+        Accept: "application/json",
       },
     });
     console.log(result);

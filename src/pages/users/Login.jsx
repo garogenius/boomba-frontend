@@ -23,8 +23,12 @@ const Login = () => {
   const login = (e) => {
     e.preventDefault();
     if (inputValue.username != "" && inputValue.password) {
+      const request = {
+        username: "muhdgazzali01@gmail.com",
+        password: "1234",
+      };
       auth
-        .userLogin(inputValue)
+        .userLogin(request)
         .then((result) => {
           if (result.data.success) {
             localStorage.setItem("token", result.data.access_token);
@@ -68,7 +72,6 @@ const Login = () => {
                             username: e.target.value,
                           })
                         }
-                        required
                       />
                     </div>
 
@@ -85,7 +88,6 @@ const Login = () => {
                             password: e.target.value,
                           })
                         }
-                        required
                       />
                     </div>
                     <div className="my-2">
