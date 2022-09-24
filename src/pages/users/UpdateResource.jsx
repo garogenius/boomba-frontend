@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import OtherPageBody from "./OtherPageBody";
 import Button from "./components/button/Button";
-import FileInput from "./components/inputs/FileInput";
 import InputField from "./components/inputs/InputField";
-import Select from "./components/select/Select";
 import TextArea from "./components/inputs/TextArea";
 const UpdateResource = () => {
   const [inputValue, setInputValue] = useState({
@@ -28,7 +26,7 @@ const UpdateResource = () => {
       <OtherPageBody>
         <div className="page-inner">
           <div className="page-header">
-            <h4 className="page-title">Add Resource</h4>
+            <h4 className="page-title">Update Resource</h4>
             <ul className="breadcrumbs">
               <li className="nav-home">
                 <a href="/">
@@ -42,7 +40,7 @@ const UpdateResource = () => {
             <div className="col-xl-4">
               <div className="card rounded">
                 <div className="card-header">
-                  <h4 className="text-center">Add Resource</h4>
+                  <h4 className="text-center">Update Resource Info</h4>
                   <div className="card-body">
                     <form action="">
                       <div className="row">
@@ -88,20 +86,11 @@ const UpdateResource = () => {
                             onchange={handleChange}
                             required
                           />
-                          {/* <InputField
-                            type="text"
-                            value={description}
-                            placeholder="description"
-                            label="description"
-                            name="description"
-                            onchange={handleChange}
-                            required
-                          /> */}
                         </div>
                       </div>
 
                       <Button
-                        value="Save"
+                        value="Update"
                         type="error"
                         // onClick={() => alert("Hello")}
                         contain={true}
