@@ -21,6 +21,7 @@ import AddResource from "../../pages/users/AddResource";
 import UpdateResource from "../../pages/users/UpdateResource";
 import ChangeOwnership from "../../pages/users/ChangeOwnership";
 import UpdateStatus from "../../pages/users/UpdateStatus";
+import ViewResource from "../../pages/users/ViewResource";
 
 let prefix = "";
 let routes = [
@@ -122,6 +123,11 @@ let routes = [
   {
     path: `${prefix}/update-status`,
     component: UpdateStatus,
+    protected: false,
+  },
+  {
+    path: `${prefix}/view-resource`,
+    component: ViewResource,
     protected: false,
   },
   {
