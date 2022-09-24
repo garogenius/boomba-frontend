@@ -58,7 +58,7 @@ const AllResources = () => {
                         <td>Phone</td>
                         <td>9/09/2022</td>
                         <td>
-                          <Link>
+                          <Link to="/view-resource">
                             <button
                               type="button"
                               data-toggle="tooltip"
@@ -74,15 +74,17 @@ const AllResources = () => {
 
                         <td>
                           <div className="form-button-action">
-                            <button
-                              type="button"
-                              data-toggle="tooltip"
-                              title=""
-                              className="btn btn-link btn-primary btn-lg"
-                              data-original-title="Edit Task"
-                            >
-                              <i className="fa fa-edit"></i>
-                            </button>
+                            <Link to="/update-resource">
+                              <button
+                                type="button"
+                                data-toggle="tooltip"
+                                title=""
+                                className="btn btn-link btn-primary btn-lg"
+                                data-original-title="Edit Task"
+                              >
+                                <i className="fa fa-edit"></i>
+                              </button>
+                            </Link>
                             <button
                               type="button"
                               data-toggle="tooltip"

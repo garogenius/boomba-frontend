@@ -18,6 +18,9 @@ import AllStores from "../../pages/users/AllStores";
 import AddStore from "../../pages/users/AddStore";
 import AllResources from "../../pages/users/AllResources";
 import AddResource from "../../pages/users/AddResource";
+import UpdateResource from "../../pages/users/UpdateResource";
+import ChangeOwnership from "../../pages/users/ChangeOwnership";
+import UpdateStatus from "../../pages/users/UpdateStatus";
 
 let prefix = "";
 let routes = [
@@ -104,6 +107,21 @@ let routes = [
   {
     path: `${prefix}/add-resource`,
     component: AddResource,
+    protected: false,
+  },
+  {
+    path: `${prefix}/update-resource`,
+    component: UpdateResource,
+    protected: false,
+  },
+  {
+    path: `${prefix}/change-ownership`,
+    component: ChangeOwnership,
+    protected: false,
+  },
+  {
+    path: `${prefix}/update-status`,
+    component: UpdateStatus,
     protected: false,
   },
   {

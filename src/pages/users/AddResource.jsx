@@ -4,6 +4,7 @@ import OtherPageBody from "../users/OtherPageBody";
 import Button from "./components/button/Button";
 import FileInput from "./components/inputs/FileInput";
 import InputField from "./components/inputs/InputField";
+import TextArea from "./components/inputs/TextArea";
 import Select from "./components/select/Select";
 const AddResource = () => {
   const [inputValue, setInputValue] = useState({
@@ -103,17 +104,7 @@ const AddResource = () => {
                           required
                         />
                       </div>
-                      <div className="col-xl-4">
-                        <InputField
-                          type="text"
-                          value={description}
-                          placeholder="description"
-                          label="description"
-                          name="description"
-                          onchange={handleChange}
-                          required
-                        />
-                      </div>
+
                       <div className="col-xl-4">
                         <InputField
                           type="text"
@@ -196,6 +187,16 @@ const AddResource = () => {
                           label="catton Picture"
                           name="catPicture"
                           onchange={handleChange}
+                        />
+                      </div>
+                      <div className="col-xl-6">
+                        <TextArea
+                          value={description}
+                          placeholder="description"
+                          label="description"
+                          name="description"
+                          onchange={handleChange}
+                          required
                         />
                       </div>
                     </div>
