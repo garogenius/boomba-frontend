@@ -8,6 +8,7 @@ import { auth } from "../../Service/authentication";
 import { ToastContainer, toast } from "react-toastify";
 import { userService } from "../../Service/user.Service";
 import BusinessType from "./components/select/BusinessType";
+import AccountType from "./components/select/AccountType";
 const CreateBusiness = () => {
   const [busType, setBusType] = useState([]);
 
@@ -126,7 +127,7 @@ const CreateBusiness = () => {
                           />
                         </div>
                         <div class="col-md-4">
-                          <Select
+                          <AccountType
                             value={business.accountType}
                             label="Account Type"
                             name="AccountType"
@@ -136,7 +137,17 @@ const CreateBusiness = () => {
                                 accountType: e.target.value,
                               })
                             }
-                          />
+                          >
+                            <option value={""} selected>
+                              -- Choose Type --
+                            </option>
+                            <option value="INDIVIDUAL" selected>
+                              INDIVIDUAL
+                            </option>
+                            <option value="BUSINESS" selected>
+                              BUSINESS
+                            </option>
+                          </AccountType>
                         </div>
                         <div className="col-md-4 form-group">
                           <label htmlFor="input-field">Business Type</label>
@@ -171,7 +182,17 @@ const CreateBusiness = () => {
                                 businessTarget: e.target.value,
                               })
                             }
-                          />
+                          >
+                            <option value="" selected>
+                              -- Choose Target --
+                            </option>
+                            <option value="" selected>
+                              PRODUCT
+                            </option>
+                            <option value="" selected>
+                              SERVICES
+                            </option>
+                          </BusinessTarget>
                         </div>
 
                         <div class="col-md-4">

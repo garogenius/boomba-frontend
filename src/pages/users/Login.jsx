@@ -12,17 +12,16 @@ const Login = () => {
   });
   const { username, password } = inputValue;
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    // alert(value);
-    setInputValue((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
+  // const handleChange = (e) => {
+  //   const { name, value } = e.target;
+  //   // alert(value);
+  //   setInputValue((prev) => ({
+  //     ...prev,
+  //     [name]: value,
+  //   }));
+  // };
   const login = (e) => {
     e.preventDefault();
-    // alert(JSON.stringify(inputValue));
     if (inputValue.username != "" && inputValue.password) {
       auth
         .userLogin(inputValue)
@@ -31,14 +30,13 @@ const Login = () => {
             localStorage.setItem("token", result.data.access_token);
             toast.success(result.data.message);
             setTimeout(() => {
-              window.location = "/dashboard";
+              // window.location = "/dashboard";
             }, 500);
           } else {
             toast.error(result.data.message);
           }
         })
         .catch((e) => {
-          // alert(JSON.stringify(e))
           toast.error(e.message);
         });
     } else {
@@ -64,7 +62,12 @@ const Login = () => {
                         placeholder="Username"
                         label="Username"
                         name="username"
-                        onChange={handleChange}
+                        onChange={(e) =>
+                          setInputValue({
+                            ...inputValue,
+                            username: e.target.value,
+                          })
+                        }
                         required
                       />
                     </div>
@@ -76,7 +79,12 @@ const Login = () => {
                         placeholder="Password"
                         label="Password"
                         name="password"
-                        onChange={handleChange}
+                        onChange={(e) =>
+                          setInputValue({
+                            ...inputValue,
+                            password: e.target.value,
+                          })
+                        }
                         required
                       />
                     </div>

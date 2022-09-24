@@ -1,6 +1,6 @@
 import React from "react";
 
-const AccountType = ({ value, label, name, onChange, children, ...props }) => (
+const Select = ({ value, label, name, onChange, children, ...props }) => (
   <div className="form-group">
     {label && <label htmlFor="input-field">{label}</label>}
     {label && <label htmlFor="input-field">{label}</label>}
@@ -9,5 +9,4 @@ const AccountType = ({ value, label, name, onChange, children, ...props }) => (
     </select>
   </div>
 );
-
-export default AccountType;
+export default Select;

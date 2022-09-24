@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { userService } from "../../Service/user.Service";
 import OtherPageBody from "../users/OtherPageBody";
 import Button from "./components/button/Button";
 import FileInput from "./components/inputs/FileInput";
 import InputField from "./components/inputs/InputField";
+import Select from "./components/select/Select";
 const AddResource = () => {
   const [inputValue, setInputValue] = useState({
     name: "",
@@ -10,17 +12,20 @@ const AddResource = () => {
     color: "",
     description: "",
     identityNumber: "",
+    catton: "",
     serialNumber: "",
     catPicture: "",
     type: "",
     picture: "",
   });
+  const [resType, setResType] = useState([]);
   const {
     name,
     model,
     color,
     description,
     identityNumber,
+    catton,
     serialNumber,
     catPicture,
     type,
@@ -34,7 +39,15 @@ const AddResource = () => {
       ...prev,
       [name]: value,
     }));
-    console.log(inputValue);
+  };
+  useEffect(() => {
+    getAllResourceType();
+  }, []);
+  let getAllResourceType = () => {
+    userService.getAllResourceType(15).then((result) => {
+      // alert(JSON.stringify(result.data.data));
+      setResType(result.data.data);
+    });
   };
   return (
     <OtherPageBody>
@@ -113,15 +126,24 @@ const AddResource = () => {
                         />
                       </div>
                       <div className="col-xl-4">
-                        <InputField
-                          type="text"
+                        <Select
                           value={type}
-                          placeholder="type"
-                          label="type"
+                          label="Resource Type"
                           name="type"
-                          onchange={handleChange}
-                          required
-                        />
+                          // onChange={(e) =>
+                          //   setBusiness({
+                          //     ...business,
+                          //     accountType: e.target.value,
+                          //   })
+                          // }
+                        >
+                          <option value="" selected>
+                            -- Type --
+                          </option>
+                          {resType.map((res) => {
+                            return <option value={res._id}>{res.title}</option>;
+                          })}
+                        </Select>
                       </div>
 
                       <div className="col-xl-4">
@@ -134,7 +156,29 @@ const AddResource = () => {
                           onchange={handleChange}
                         />
                       </div>
-
+                      <div className="col-xl-4 ">
+                        <Select
+                          value={catton}
+                          label="Account Type"
+                          name="AccountType"
+                          // onChange={(e) =>
+                          //   setBusiness({
+                          //     ...business,
+                          //     accountType: e.target.value,
+                          //   })
+                          // }
+                        >
+                          <option value="" selected>
+                            -- Catton --
+                          </option>
+                          <option value="Yes" selected>
+                            Yes
+                          </option>
+                          <option value="NO" selected>
+                            NO
+                          </option>
+                        </Select>
+                      </div>
                       <div className="col-xl-4">
                         <InputField
                           type="text"

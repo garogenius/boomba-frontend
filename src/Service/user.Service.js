@@ -11,5 +11,14 @@ let userService = {
     });
     return result;
   },
+  getAllResourceType: async () => {
+    const result = await axios.get(endPoint + "resource-type", {
+      headers: {
+        // authorization: "",
+        "Content-Type": "application/json",
+      },
+    });
+    return result;
+  },
 };
 export { userService };
