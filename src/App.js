@@ -1,24 +1,32 @@
-import './App.css';
-import React from 'react';
-import GoogleLogin from 'react-google-login';
+//guest pages..
+import NotFound from "./pages/guest/NotFound";
+import Home from "./pages/guest/Home";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from "react-router-dom";
+import routes from "./utils/routes/userRoutes";
+import guestRoute from "./utils/routes/guestRoutes";
+
+// import ProtectedRoute from "./ProtectedRoute";
 
 function App() {
-
-  const responseGoogle = (response) => {
-    console.log(response);
-  }
-
+  let allroutes = routes.concat(guestRoute);
   return (
     <div className="App">
-      <h2>Login with Google</h2>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/404" component={NotFound} />
 
-      <GoogleLogin
-        clientId="94713881842-9jepfp8qaiit50kk80bnj6e6mjhtshhp.apps.googleusercontent.com"
-        buttonText="Login With Google"
-        onSuccess={responseGoogle}
-        onFailure={responseGoogle}
-        cookiePolicy={'single_host_origin'}
-      />
+          {allroutes.map((route) => {
+            return <Route path={route.path} component={route.component} />;
+          })}
+          <Redirect to="/404" />
+        </Switch>
+      </Router>
     </div>
   );
 }
