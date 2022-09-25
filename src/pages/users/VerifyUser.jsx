@@ -1,29 +1,45 @@
 import React, { useState } from "react";
 import Button from "./components/button/Button";
 import InputField from "./components/inputs/InputField";
-import { auth } from "../../Service/authentication";
+import { auth } from "../../Service/auth.service";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { messages } from "../../utils/constants/messages";
+
 const VerifyUser = () => {
-  const [inputValue, setInputValue] = useState({
+  const [input, setInput] = useState({
     phoneNumber: "",
     otp: "",
   });
-  const { phoneNumber, otp } = inputValue;
+  const [isProcessing, setIsProcessing] = useState(false);
+
+  const { phoneNumber, otp } = input;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setInputValue((prev) => ({
+    setInput((prev) => ({
       ...prev,
       [name]: value,
     }));
   };
-  const verify = (e) => {
-    e.preventDefault();
-    if (inputValue.phoneNumber != "" && inputValue.otp) {
+  const verify = () => {
+    if (input.phoneNumber.length < 11) toast.error(messages.phoneLength);
+    if (input.otp.length < 6) toast.error(messages.otpLength);
+
+    if (
+      input.phoneNumber !== "" &&
+      input.otp !== "" &&
+      input.phoneNumber.length < 11 &&
+      input.otp.length < 6
+    ) {
+      const request = {
+        phoneNumber: input.phoneNumber,
+        otp: input.otp,
+      };
       auth
-        .verifyAccount(inputValue)
+        .verifyAccount(request)
         .then((result) => {
+          setIsProcessing(false);
           if (result.data.success) {
             toast.success(result.data.message);
             setTimeout(() => {
@@ -51,7 +67,7 @@ const VerifyUser = () => {
               <div id="log" className="card border-primary rounded my-5">
                 <div className="card-body">
                   <h4 className="text-center text-dark">Verify Account</h4>
-                  <form method="post" action="" onSubmit={verify}>
+                  <form method="post">
                     <div className="">
                       <InputField
                         type="text"
@@ -78,10 +94,14 @@ const VerifyUser = () => {
 
                     <div className="button">
                       <Button
-                        value="Verify Account"
                         type="error"
-                        name="submit"
-                        // onClick={() => alert("Hello")}
+                        value={
+                          isProcessing
+                            ? messages.processingMessage
+                            : "Verify Account"
+                        }
+                        name="button"
+                        onClick={() => (!isProcessing ? verify() : null)}
                         contain={true}
                       />
                     </div>

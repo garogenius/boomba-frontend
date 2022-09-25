@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
 import InputField from "./components/inputs/InputField";
 import Button from "./components/button/Button";
-import Select from "./components/select/AccountType";
-// import BusinessType from "./components/select/BusinessType";
 import BusinessTarget from "./components/select/BusinessTarget";
-import { auth } from "../../Service/authentication";
+import { auth } from "../../Service/auth.service";
 import { ToastContainer, toast } from "react-toastify";
-import { userService } from "../../Service/user.Service";
+import { userService } from "../../Service/user.service";
 import BusinessType from "./components/select/BusinessType";
 import AccountType from "./components/select/AccountType";
+import { messages } from "../../utils/constants/messages";
 const CreateBusiness = () => {
   const [busType, setBusType] = useState([]);
 
@@ -25,6 +24,8 @@ const CreateBusiness = () => {
     businessType: "",
     businessTarget: "",
   });
+  const [isProcessing, setIsProcessing] = useState(false);
+
   useEffect(() => {
     getAllBusinessType();
   }, []);
@@ -34,9 +35,22 @@ const CreateBusiness = () => {
       setBusType(result.data.data);
     });
   };
-  const createBusiness = (e) => {
-    e.preventDefault();
-    auth.registerUser(business).then((result) => {
+  const createBusiness = () => {
+    const request = {
+      name: business.name,
+      phoneNumber: business.phoneNumber,
+      emailAddress: business.emailAddress,
+      reqNumber: business.reqNumber,
+      state: business.state,
+      lga: business.lga,
+      street: business.street,
+      password: business.password,
+      accountType: business.accountType,
+      businessType: business.businessType,
+      businessTarget: business.businessTarget,
+    };
+    auth.registerUser(request).then((result) => {
+      setIsProcessing(false);
       if (result.data.success) {
         toast.success(result.data.message);
         setTimeout(() => {
@@ -62,7 +76,7 @@ const CreateBusiness = () => {
               <div className="card border-primary rounded">
                 <div className="card-body">
                   <h4 className="text-center text-dark">Create Business</h4>
-                  <form method="post" onClick={createBusiness} action="">
+                  <form method="post">
                     <div className="container-fluid">
                       <div className="row">
                         <div class="col-md-4">
@@ -261,10 +275,16 @@ const CreateBusiness = () => {
 
                       <div className="col-md-4">
                         <Button
-                          value="Create Account"
                           type="error"
-                          name="submit"
-                          // onClick={() => alert("Hello")}
+                          value={
+                            isProcessing
+                              ? messages.processingMessage
+                              : "Create Account"
+                          }
+                          name="button"
+                          onClick={() =>
+                            !isProcessing ? createBusiness() : null
+                          }
                           contain={true}
                         />
                       </div>

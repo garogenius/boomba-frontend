@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { userService } from "../../../../Service/user.Service";
+import React from "react";
 // const [businessType, setBusinessType] = useState([]);
 // useEffect(() => {});
 const BusinessType = ({ label, children, ...props }) => (

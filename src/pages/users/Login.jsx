@@ -2,34 +2,42 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "./components/button/Button";
 import InputField from "./components/inputs/InputField";
-import { auth } from "../../Service/authentication";
+import { auth } from "../../Service/auth.service";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { messages } from "../../utils/constants/messages";
+
 const Login = () => {
-  const [inputValue, setInputValue] = useState({
+  const [input, setInput] = useState({
     username: "",
     password: "",
   });
-  const { username, password } = inputValue;
+  const [isProcessing, setIsProcessing] = useState(false);
+  const { username, password } = input;
 
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   // alert(value);
-  //   setInputValue((prev) => ({
-  //     ...prev,
-  //     [name]: value,
-  //   }));
-  // };
-  const login = (e) => {
-    e.preventDefault();
-    if (inputValue.username != "" && inputValue.password) {
+  const login = () => {
+    if (input.username === "") toast.error(messages.usernameMessage);
+    if (input.username.length < 3) toast.error(messages.usernameLength);
+
+    if (input.password === "" || input.password.length < 6)
+      toast.error(messages.passwordLength);
+
+    if (
+      input.username &&
+      input.password &&
+      input.username.length >= 3 &&
+      input.password.length >= 6
+    ) {
       const request = {
-        username: "muhdgazzali01@gmail.com",
-        password: "1234",
+        username: input.username,
+        password: input.password,
       };
+
+      setIsProcessing(true);
       auth
         .userLogin(request)
         .then((result) => {
+          setIsProcessing(false);
           if (result.data.success) {
             localStorage.setItem("token", result.data.access_token);
             toast.success(result.data.message);
@@ -37,14 +45,12 @@ const Login = () => {
               // window.location = "/dashboard";
             }, 500);
           } else {
-            toast.error(result.data.message);
+            toast.error(messages.invalidCredentials);
           }
         })
         .catch((e) => {
           toast.error(e.message);
         });
-    } else {
-      toast.error("Field cannot be empty..!");
     }
   };
   return (
@@ -58,7 +64,7 @@ const Login = () => {
               <div id="log" className="card border-primary rounded my-5">
                 <div className="card-body">
                   <h4 className="text-center text-dark">Login</h4>
-                  <form method="post" action="" onSubmit={login}>
+                  <form method="post">
                     <div className="">
                       <InputField
                         type="text"
@@ -67,8 +73,8 @@ const Login = () => {
                         label="Username"
                         name="username"
                         onChange={(e) =>
-                          setInputValue({
-                            ...inputValue,
+                          setInput({
+                            ...input,
                             username: e.target.value,
                           })
                         }
@@ -83,8 +89,8 @@ const Login = () => {
                         label="Password"
                         name="password"
                         onChange={(e) =>
-                          setInputValue({
-                            ...inputValue,
+                          setInput({
+                            ...input,
                             password: e.target.value,
                           })
                         }
@@ -103,10 +109,12 @@ const Login = () => {
 
                     <div className="button">
                       <Button
-                        value="Login"
+                        value={
+                          isProcessing ? messages.processingMessage : "Login"
+                        }
                         type="error"
-                        name="submit"
-                        // onClick={() => alert("Hello")}
+                        name="button"
+                        onClick={() => (!isProcessing ? login() : null)}
                         contain={true}
                       />
                     </div>

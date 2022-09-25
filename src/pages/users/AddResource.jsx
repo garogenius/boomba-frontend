@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { userService } from "../../Service/user.Service";
+import { userService } from "../../Service/user.service";
 import OtherPageBody from "../users/OtherPageBody";
 import Button from "./components/button/Button";
 import FileInput from "./components/inputs/FileInput";
 import InputField from "./components/inputs/InputField";
 import TextArea from "./components/inputs/TextArea";
 import Select from "./components/select/Select";
+import { messages } from "../../utils/constants/messages";
 const AddResource = () => {
-  const [inputValue, setInputValue] = useState({
+  const [isProcessing, setIsProcessing] = useState(false);
+
+  const [input, setInput] = useState({
     name: "",
     model: "",
     color: "",
@@ -31,12 +34,12 @@ const AddResource = () => {
     catPicture,
     type,
     picture,
-  } = inputValue;
+  } = input;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     // alert(value);
-    setInputValue((prev) => ({
+    setInput((prev) => ({
       ...prev,
       [name]: value,
     }));
@@ -121,12 +124,7 @@ const AddResource = () => {
                           value={type}
                           label="Resource Type"
                           name="type"
-                          // onChange={(e) =>
-                          //   setBusiness({
-                          //     ...business,
-                          //     accountType: e.target.value,
-                          //   })
-                          // }
+                          onchange={handleChange}
                         >
                           <option value="" selected>
                             -- Type --
@@ -152,12 +150,7 @@ const AddResource = () => {
                           value={catton}
                           label="Account Type"
                           name="AccountType"
-                          // onChange={(e) =>
-                          //   setBusiness({
-                          //     ...business,
-                          //     accountType: e.target.value,
-                          //   })
-                          // }
+                          onchange={handleChange}
                         >
                           <option value="" selected>
                             -- Catton --
@@ -205,9 +198,12 @@ const AddResource = () => {
 
                       <div className="col-md-4">
                         <Button
-                          value="Save"
                           type="error"
-                          // onClick={() => alert("Hello")}
+                          value={
+                            isProcessing ? messages.processingMessage : "Save"
+                          }
+                          name="button"
+                          // onClick={() => (!isProcessing ? add() : null)}
                           contain={true}
                         />
                       </div>
