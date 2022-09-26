@@ -49,7 +49,9 @@ const Login = () => {
           }
         })
         .catch((e) => {
-          toast.error(e.message);
+          console.log(e.message);
+          setIsProcessing(false);
+          toast.error("Authentication failed!");
         });
     }
   };
@@ -64,61 +66,59 @@ const Login = () => {
               <div id="log" className="card border-primary rounded my-5">
                 <div className="card-body">
                   <h4 className="text-center text-dark">Login</h4>
-                  <form method="post">
-                    <div className="">
-                      <InputField
-                        type="text"
-                        value={username}
-                        placeholder="Username"
-                        label="Username"
-                        name="username"
-                        onChange={(e) =>
-                          setInput({
-                            ...input,
-                            username: e.target.value,
-                          })
-                        }
-                      />
-                    </div>
+                  <div className="">
+                    <InputField
+                      type="text"
+                      value={username}
+                      placeholder="Username"
+                      label="Username"
+                      name="username"
+                      onChange={(e) =>
+                        setInput({
+                          ...input,
+                          username: e.target.value,
+                        })
+                      }
+                    />
+                  </div>
 
+                  <div className="">
+                    <InputField
+                      type="password"
+                      value={password}
+                      placeholder="Password"
+                      label="Password"
+                      name="password"
+                      onChange={(e) =>
+                        setInput({
+                          ...input,
+                          password: e.target.value,
+                        })
+                      }
+                    />
+                  </div>
+                  <div className="my-2">
+                    <div className="float-right text-sm">
+                      <Link to="/">Forget Password ?</Link>
+                    </div>
                     <div className="">
-                      <InputField
-                        type="password"
-                        value={password}
-                        placeholder="Password"
-                        label="Password"
-                        name="password"
-                        onChange={(e) =>
-                          setInput({
-                            ...input,
-                            password: e.target.value,
-                          })
-                        }
-                      />
+                      <Link className="" to="/register">
+                        Create Account
+                      </Link>
                     </div>
-                    <div className="my-2">
-                      <div className="float-right text-sm">
-                        <Link to="/">Forget Password ?</Link>
-                      </div>
-                      <div className="">
-                        <Link className="" to="/register">
-                          Create Account
-                        </Link>
-                      </div>
-                    </div>
+                  </div>
 
-                    <div className="button">
-                      <Button
-                        value={
-                          isProcessing ? messages.processingMessage : "Login"
-                        }
-                        type="error"
-                        name="button"
-                        onClick={() => (!isProcessing ? login() : null)}
-                        contain={true}
-                      />
-                    </div>
-                  </form>
+                  <div className="button">
+                    <Button
+                      value={
+                        isProcessing ? messages.processingMessage : "Login"
+                      }
+                      type="button"
+                      name="button"
+                      onClick={() => (!isProcessing ? login() : null)}
+                      contain={true}
+                    />
+                  </div>
                 </div>
               </div>
             </div>

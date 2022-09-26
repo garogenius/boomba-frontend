@@ -1,6 +1,8 @@
 import { util } from "../utils/constants/constants";
 import { http } from "../utils/constants/http";
 
+console.log(http);
+
 let auth = {
   registerUser: async (body) => {
     return await http.post(`${util.endPoint}/user`, body, util.headers);

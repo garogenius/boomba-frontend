@@ -67,45 +67,44 @@ const VerifyUser = () => {
               <div id="log" className="card border-primary rounded my-5">
                 <div className="card-body">
                   <h4 className="text-center text-dark">Verify Account</h4>
-                  <form method="post">
-                    <div className="">
-                      <InputField
-                        type="text"
-                        value={phoneNumber}
-                        placeholder="phone"
-                        label="phone"
-                        name="phoneNumber"
-                        onChange={handleChange}
-                        required
-                      />
-                    </div>
 
-                    <div className="">
-                      <InputField
-                        type="text"
-                        value={otp}
-                        placeholder="otp"
-                        label="otp"
-                        name="otp"
-                        onChange={handleChange}
-                        required
-                      />
-                    </div>
+                  <div className="">
+                    <InputField
+                      type="text"
+                      value={phoneNumber}
+                      placeholder="phone"
+                      label="phone"
+                      name="phoneNumber"
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
 
-                    <div className="button">
-                      <Button
-                        type="error"
-                        value={
-                          isProcessing
-                            ? messages.processingMessage
-                            : "Verify Account"
-                        }
-                        name="button"
-                        onClick={() => (!isProcessing ? verify() : null)}
-                        contain={true}
-                      />
-                    </div>
-                  </form>
+                  <div className="">
+                    <InputField
+                      type="text"
+                      value={otp}
+                      placeholder="otp"
+                      label="otp"
+                      name="otp"
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
+
+                  <div className="button">
+                    <Button
+                      type="button"
+                      value={
+                        isProcessing
+                          ? messages.processingMessage
+                          : "Verify Account"
+                      }
+                      name="button"
+                      onClick={() => (!isProcessing ? verify() : null)}
+                      contain={true}
+                    />
+                  </div>
                 </div>
               </div>
             </div>

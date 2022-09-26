@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "./components/button/Button";
 import InputField from "./components/inputs/InputField";
-import Select from "./components/select/AccountType";
+import AccountType from "./components/select/AccountType";
 import { auth } from "../../Service/auth.service";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -48,7 +48,7 @@ const CreateUser = () => {
             toast.success(result.data.message);
 
             setTimeout(() => {
-              // window.location = "/verify";
+              window.location = "/verify";
             }, 500);
           } else {
             toast.error(result.data.message);
@@ -69,7 +69,7 @@ const CreateUser = () => {
               <div className="card border-primary rounded">
                 <div className="card-body">
                   <h4 className="text-center text-dark">Create Account</h4>
-                  <form method="post">
+                  <form method="POST">
                     <div className="container-fluid">
                       <div className="row">
                         <div class="col-md-4">
@@ -131,7 +131,7 @@ const CreateUser = () => {
                           />
                         </div>
                         <div class="col-md-4">
-                          <Select
+                          <AccountType
                             value={input.accountType}
                             label="Account Type"
                             name="AccountType"
@@ -141,7 +141,17 @@ const CreateUser = () => {
                                 accountType: e.target.value,
                               })
                             }
-                          />
+                          >
+                            <option value={""} selected>
+                              -- Choose Type --
+                            </option>
+                            <option value="INDIVIDUAL" selected>
+                              INDIVIDUAL
+                            </option>
+                            <option value="BUSINESS" selected>
+                              BUSINESS
+                            </option>
+                          </AccountType>
                         </div>
                         <div class="col-md-4">
                           <InputField
