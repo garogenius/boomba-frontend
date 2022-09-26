@@ -1,6 +1,7 @@
 const messages = {
   processingMessage: "Please Wait..",
   invalidCredentials: "Invalid Username or Password",
+  invalidDetails: "Invalid details",
   usernameMessage: "Enter username",
   usernameLength: "Username should be at least grater 3 chars",
   passwordLength: "Password at least 6 chars",
