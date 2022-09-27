@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import InputField from "./components/inputs/InputField";
 import Button from "./components/button/Button";
 import BusinessTarget from "./components/select/BusinessTarget";
-import { auth } from "../../Service/auth.service";
+import { auth } from "../../service/auth.service";
 import { ToastContainer, toast } from "react-toastify";
-import { userService } from "../../Service/user.service";
+import { userService } from "../../service/user.service";
 import BusinessType from "./components/select/BusinessType";
 import AccountType from "./components/select/AccountType";
 import { messages } from "../../utils/constants/messages";
@@ -36,35 +36,50 @@ const CreateBusiness = () => {
     });
   };
   const createBusiness = () => {
-    const request = {
-      name: business.name,
-      phoneNumber: business.phoneNumber,
-      emailAddress: business.emailAddress,
-      reqNumber: business.reqNumber,
-      state: business.state,
-      lga: business.lga,
-      street: business.street,
-      password: business.password,
-      accountType: business.accountType,
-      businessType: business.businessType,
-      businessTarget: business.businessTarget,
-    };
-    auth
-      .registerUser(request)
-      .then((result) => {
-        setIsProcessing(false);
-        if (result.data.success) {
-          toast.success(result.data.message);
-          setTimeout(() => {
-            window.location = "/verify-account";
-          }, 500);
-        } else {
-          toast.error(result.data.message);
-        }
-      })
-      .catch((e) => {
-        toast.error(messages.invalidDetails);
-      });
+    if (business.phoneNumber.length < 11)
+      toast.error(messages.phoneLengthMessage);
+    if (business.reqNumber.length < 11)
+      toast.error(messages.reqNoLengthMessage);
+    if (business.password.length < 6)
+      toast.error(messages.passwordLengthMessage);
+    if (
+      business.phoneNumber.length >= 11 &&
+      business.reqNumber.length >= 11 &&
+      business.password.length >= 6
+    ) {
+      const request = {
+        name: business.name,
+        phoneNumber: business.phoneNumber,
+        emailAddress: business.emailAddress,
+        reqNumber: business.reqNumber,
+        state: business.state,
+        lga: business.lga,
+        street: business.street,
+        password: business.password,
+        accountType: business.accountType,
+        businessType: business.businessType,
+        businessTarget: business.businessTarget,
+      };
+      setIsProcessing(true);
+      auth
+        .registerUser(request)
+        .then((result) => {
+          setIsProcessing(false);
+          if (result.data.success) {
+            toast.success(result.data.message);
+            setTimeout(() => {
+              window.location = "/verify-account";
+            }, 500);
+          } else {
+            toast.error(result.data.message);
+          }
+        })
+        .catch((e) => {
+          toast.error(messages.invalidDetails);
+        });
+    } else {
+      toast.error(messages.invalidDetails);
+    }
   };
 
   return (

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Button from "./components/button/Button";
 import InputField from "./components/inputs/InputField";
 import AccountType from "./components/select/AccountType";
-import { auth } from "../../Service/auth.service";
+import { auth } from "../../service/auth.service";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { messages } from "../../utils/constants/messages";
@@ -22,9 +22,9 @@ const CreateUser = () => {
   const [isProcessing, setIsProcessing] = useState(false);
 
   const create = () => {
-    if (input.phoneNumber.length > 11) toast.error(messages.phoneLength);
-    if (input.nin.length > 11) toast.error(messages.ninLength);
-    if (input.password.length < 6) toast.error(messages.passwordLength);
+    if (input.phoneNumber.length < 11) toast.error(messages.phoneLengthMessage);
+    if (input.nin.length < 11) toast.error(messages.ninLengthMessage);
+    if (input.password.length < 6) toast.error(messages.passwordLengthMessage);
     if (
       input.phoneNumber.length >= 11 &&
       input.nin.length >= 11 &&
@@ -58,7 +58,7 @@ const CreateUser = () => {
           toast.error(messages.invalidDetails);
         });
     } else {
-      toast.error("fields cannot be empty!!");
+      toast.error(messages.invalidDetails);
     }
   };
   return (

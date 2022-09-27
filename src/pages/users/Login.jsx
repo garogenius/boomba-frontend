@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "./components/button/Button";
 import InputField from "./components/inputs/InputField";
-import { auth } from "../../Service/auth.service";
+import { auth } from "../../service/auth.service";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { messages } from "../../utils/constants/messages";
@@ -17,44 +17,46 @@ const Login = () => {
 
   const login = () => {
     if (input.username === "") toast.error(messages.usernameMessage);
-    if (input.username.length < 3) toast.error(messages.usernameLength);
+    if (input.username.length < 3) toast.error(messages.usernameLengthMessage);
 
     if (input.password === "" || input.password.length < 6)
-      toast.error(messages.passwordLength);
+      toast.error(messages.passwordLengthMessage);
 
-    // if (
-    //   input.username &&
-    //   input.password &&
-    //   input.username.length >= 3 &&
-    //   input.password.length >= 6
-    // ) {
-    const request = {
-      username: input.username,
-      password: input.password,
-    };
+    if (
+      input.username &&
+      input.password &&
+      input.username.length >= 3 &&
+      input.password.length >= 6
+    ) {
+      const request = {
+        username: input.username,
+        password: input.password,
+      };
 
-    setIsProcessing(true);
-    auth.userLogin(request).then((result) => {
-      setIsProcessing(false);
-      if (result.data.success) {
-        localStorage.setItem("token", result.data.access_token);
-        toast.success(result.data.message);
-        setTimeout(() => {
-          window.location = "/dashboard";
-        }, 500);
-      } else {
-        setIsProcessing(false);
-        toast.error(messages.invalidCredentials);
-      }
-    });
-    // .catch((e) => {
-    //   console.log(messages.invalidCredentials);
-    //   setIsProcessing(false);
-
-    // });
-    // } else {
-    //   toast.error(messages.invalidCredentials);
-    // }
+      setIsProcessing(true);
+      auth
+        .userLogin(request)
+        .then((result) => {
+          setIsProcessing(false);
+          if (result.data.success) {
+            localStorage.setItem("userToken", result.data.data.access_token);
+            localStorage.setItem("user", JSON.stringify(result.data.data.info));
+            toast.success(result.data.message);
+            setTimeout(() => {
+              window.location = "/dashboard";
+            }, 500);
+          } else {
+            // setIsProcessing(false);
+            toast.error(messages.invalidCredentials);
+          }
+        })
+        .catch((e) => {
+          console.log(messages.invalidCredentials);
+          setIsProcessing(false);
+        });
+    } else {
+      toast.error(messages.invalidCredentials);
+    }
   };
   return (
     <div>

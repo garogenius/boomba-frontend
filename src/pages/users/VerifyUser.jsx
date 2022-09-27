@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Button from "./components/button/Button";
 import InputField from "./components/inputs/InputField";
-import { auth } from "../../Service/auth.service";
+import { auth } from "../../service/auth.service";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { messages } from "../../utils/constants/messages";
@@ -26,30 +26,30 @@ const VerifyUser = () => {
     if (input.phoneNumber.length < 11) toast.error(messages.phoneLength);
     if (input.otp.length < 6) toast.error(messages.otpLength);
 
-    // if (input.phoneNumber.length < 11 && input.otp.length < 6) {
-    const request = {
-      phoneNumber: input.phoneNumber,
-      otp: input.otp,
-    };
-    auth
-      .verifyAccount(request)
-      .then((result) => {
-        setIsProcessing(false);
-        if (result.data.success) {
-          toast.success(result.data.message);
-          setTimeout(() => {
-            window.location = "/login";
-          }, 500);
-        } else {
-          toast.error(result.data.message);
-        }
-      })
-      .catch((e) => {
-        toast.error(messages.invalidDetails);
-      });
-    // } else {
-    //   toast.error("fields cannot be empty");
-    // }
+    if (input.phoneNumber.length >= 11 && input.otp.length >= 6) {
+      const request = {
+        phoneNumber: input.phoneNumber,
+        otp: input.otp,
+      };
+      auth
+        .verifyAccount(request)
+        .then((result) => {
+          setIsProcessing(false);
+          if (result.data.success) {
+            toast.success(result.data.message);
+            setTimeout(() => {
+              window.location = "/login";
+            }, 500);
+          } else {
+            toast.error(result.data.message);
+          }
+        })
+        .catch((e) => {
+          toast.error(messages.invalidDetails);
+        });
+    } else {
+      toast.error(messages.invalidDetails);
+    }
   };
   return (
     <div>
