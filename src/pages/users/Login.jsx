@@ -19,14 +19,15 @@ const Login = () => {
     if (input.username === "") toast.error(messages.usernameMessage);
     if (input.username.length < 3) toast.error(messages.usernameLengthMessage);
 
-    if (input.password === "" || input.password.length < 6)
-      toast.error(messages.passwordLengthMessage);
+    // if (input.password === "" || input.password.length < 6)
+    //   toast.error(messages.passwordLengthMessage);
 
     if (
       input.username &&
       input.password &&
-      input.username.length >= 3 &&
-      input.password.length >= 6
+      input.username.length >= 3
+      // &&
+      // input.password.length >= 6
     ) {
       const request = {
         username: input.username,

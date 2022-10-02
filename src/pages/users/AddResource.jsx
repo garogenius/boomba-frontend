@@ -70,7 +70,7 @@ const AddResource = () => {
       })
       .catch((e) => {
         setIsProcessing(false);
-        toast.error(messages.invalidDetails);
+        toast.error(e.message);
       });
     // } else {
     //   toast.error(messages.invalidDetails);
