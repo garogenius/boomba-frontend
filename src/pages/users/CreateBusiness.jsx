@@ -4,7 +4,7 @@ import Button from "./components/button/Button";
 import BusinessTarget from "./components/select/BusinessTarget";
 import { auth } from "../../service/auth.service";
 import { ToastContainer, toast } from "react-toastify";
-import { userService } from "../../service/user.service";
+import { resourceService } from "../../service/resource.service";
 import BusinessType from "./components/select/BusinessType";
 import AccountType from "./components/select/AccountType";
 import { messages } from "../../utils/constants/messages";
@@ -30,7 +30,7 @@ const CreateBusiness = () => {
     getAllBusinessType();
   }, []);
   let getAllBusinessType = () => {
-    userService.getAllBusinessType(15).then((result) => {
+    resourceService.getAllBusinessType(15).then((result) => {
       // alert(JSON.stringify(result.data.data));
       setBusType(result.data.data);
     });

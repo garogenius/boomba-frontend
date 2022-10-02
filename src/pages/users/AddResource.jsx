@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { userService } from "../../service/user.service";
+import { resourceService } from "../../service/resource.service";
 import OtherPageBody from "../users/OtherPageBody";
 import Button from "./components/button/Button";
 import FileInput from "./components/inputs/FileInput";
@@ -10,7 +10,6 @@ import { messages } from "../../utils/constants/messages";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 const AddResource = () => {
-  const [userInfo, setUserInfo] = useState({});
   const [isProcessing, setIsProcessing] = useState(false);
   const [resType, setResType] = useState([]);
   const [input, setInput] = useState({
@@ -27,11 +26,10 @@ const AddResource = () => {
   });
 
   useEffect(() => {
-    setUserInfo(JSON.parse(localStorage.getItem("user")));
     getAllResourceType();
   }, []);
   let getAllResourceType = () => {
-    userService.getAllResourceType(15).then((result) => {
+    resourceService.getAllResourceType(15).then((result) => {
       // alert(JSON.stringify(result.data.data));
       setResType(result.data.data);
     });
@@ -55,7 +53,7 @@ const AddResource = () => {
       catPicture: input.catPicture,
     };
     setIsProcessing(true);
-    userService
+    resourceService
       .createResource(request)
       .then((result) => {
         setIsProcessing(false);
@@ -97,7 +95,7 @@ const AddResource = () => {
               <div className="card rounded">
                 <div className="card-header">
                   <h4 className="text-center">Add Resource</h4>
-                  <p>{userInfo.name}</p>
+
                   <div className="card-body">
                     <div className="row">
                       <div className="col-xl-4">

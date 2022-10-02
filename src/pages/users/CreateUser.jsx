@@ -156,9 +156,6 @@ const CreateUser = () => {
                           <option value="INDIVIDUAL" selected>
                             INDIVIDUAL
                           </option>
-                          <option value="BUSINESS" selected>
-                            BUSINESS
-                          </option>
                         </AccountType>
                       </div>
                       <div class="col-md-4">
