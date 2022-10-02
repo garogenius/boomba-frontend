@@ -7,8 +7,8 @@ const BusinessType = ({ label, children, option, ...props }) => (
       <label htmlFor="input-field">
         {label}
         <p
-          className="text-xs text-danger"
-          style={{ marginTop: "-23px", marginLeft: "50px" }}
+          className="text-xs text-danger float-right"
+          style={{ marginTop: "-5px" }}
         >
           {option}
         </p>

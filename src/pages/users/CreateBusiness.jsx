@@ -42,6 +42,8 @@ const CreateBusiness = () => {
       toast.error(messages.reqNoLengthMessage);
     if (business.password.length < 6)
       toast.error(messages.passwordLengthMessage);
+    if (business.confirmPassword !== business.password)
+      toast.error(messages.passwordMisMatch);
     if (
       business.phoneNumber.length >= 11 &&
       business.reqNumber.length >= 11 &&
@@ -101,6 +103,7 @@ const CreateBusiness = () => {
                           value={business.name}
                           placeholder="Name"
                           label="Name"
+                          option="*"
                           name="name"
                           onChange={(e) =>
                             setBusiness({ ...business, name: e.target.value })
@@ -114,6 +117,7 @@ const CreateBusiness = () => {
                           value={business.emailAddress}
                           placeholder="email"
                           label="Email"
+                          option="*"
                           name="email"
                           onChange={(e) =>
                             setBusiness({
@@ -130,6 +134,7 @@ const CreateBusiness = () => {
                           value={business.phoneNumber}
                           placeholder="Phone"
                           label="Phone"
+                          option="*"
                           name="phone"
                           onChange={(e) =>
                             setBusiness({
@@ -146,6 +151,7 @@ const CreateBusiness = () => {
                           value={business.reqNumber}
                           placeholder="Registration No"
                           label="reqNo"
+                          option="*"
                           name="reqNo"
                           onChange={(e) =>
                             setBusiness({
@@ -160,6 +166,7 @@ const CreateBusiness = () => {
                         <AccountType
                           value={business.accountType}
                           label="Account Type"
+                          option="*"
                           name="AccountType"
                           onChange={(e) =>
                             setBusiness({
@@ -171,19 +178,17 @@ const CreateBusiness = () => {
                           <option value={""} selected>
                             -- Choose Type --
                           </option>
-                          <option value="INDIVIDUAL" selected>
-                            INDIVIDUAL
-                          </option>
                           <option value="BUSINESS" selected>
                             BUSINESS
                           </option>
                         </AccountType>
                       </div>
                       <div className="col-md-4 form-group">
-                        <label htmlFor="input-field">Business Type</label>
                         <BusinessType
                           value={business.businessType}
                           name="bisnessType"
+                          option="*"
+                          label="Business Type"
                           onChange={(e) =>
                             setBusiness({
                               ...business,
@@ -203,6 +208,7 @@ const CreateBusiness = () => {
                         <BusinessTarget
                           value={business.businessTarget}
                           label="Business Target"
+                          option="*"
                           name="businessTarget"
                           onChange={(e) =>
                             setBusiness({
@@ -229,6 +235,7 @@ const CreateBusiness = () => {
                           value={business.state}
                           placeholder="state"
                           label="state"
+                          option="*Optional"
                           name="state"
                           onChange={(e) =>
                             setBusiness({
@@ -244,6 +251,7 @@ const CreateBusiness = () => {
                           value={business.lga}
                           placeholder="Local Govt"
                           label="lga"
+                          option="*Optional"
                           name="lga"
                           onChange={(e) =>
                             setBusiness({ ...business, lga: e.target.value })
@@ -256,6 +264,7 @@ const CreateBusiness = () => {
                           value={business.street}
                           placeholder="street"
                           label="street"
+                          option="*Optional"
                           name="street"
                           onChange={(e) =>
                             setBusiness({
@@ -272,11 +281,28 @@ const CreateBusiness = () => {
                           value={business.password}
                           placeholder="password"
                           label="password"
+                          option="*"
                           name="password"
                           onChange={(e) =>
                             setBusiness({
                               ...business,
                               password: e.target.value,
+                            })
+                          }
+                        />
+                      </div>
+                      <div class="col-md-4">
+                        <InputField
+                          type="password"
+                          value={business.confirmPassword}
+                          placeholder="password"
+                          label="Confirm Password"
+                          option="*"
+                          name="password"
+                          onChange={(e) =>
+                            setBusiness({
+                              ...business,
+                              confirmPassword: e.target.value,
                             })
                           }
                         />
