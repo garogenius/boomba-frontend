@@ -1,12 +1,14 @@
 const messages = {
   processingMessage: "Please Wait..",
   invalidCredentials: "Invalid Username or Password",
+  invalidDetails: "Invalid details",
   usernameMessage: "Enter username",
-  usernameLength: "Username should be at least grater 3 chars",
-  passwordLength: "Password at least 6 chars",
-  phoneLength: "Phone number is not valid",
-  ninLength: "Nin is not valid",
-  otpLength: "OTP is not valid",
+  usernameLengthMessage: "Username should be at least grater 3 chars",
+  passwordLengthMessage: "Password at least 6 chars",
+  phoneLengthMessage: "Phone number is not valid",
+  ninLengthMessage: "Nin is not valid",
+  reqNoLengthMessage: "Reg Number is not valid",
+  otpLengthMessage: "OTP is not valid",
 };
 
 export { messages };

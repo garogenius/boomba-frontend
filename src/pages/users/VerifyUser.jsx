@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Button from "./components/button/Button";
 import InputField from "./components/inputs/InputField";
-import { auth } from "../../Service/auth.service";
+import { auth } from "../../service/auth.service";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { messages } from "../../utils/constants/messages";
@@ -26,12 +26,7 @@ const VerifyUser = () => {
     if (input.phoneNumber.length < 11) toast.error(messages.phoneLength);
     if (input.otp.length < 6) toast.error(messages.otpLength);
 
-    if (
-      input.phoneNumber !== "" &&
-      input.otp !== "" &&
-      input.phoneNumber.length < 11 &&
-      input.otp.length < 6
-    ) {
+    if (input.phoneNumber.length >= 11 && input.otp.length >= 6) {
       const request = {
         phoneNumber: input.phoneNumber,
         otp: input.otp,
@@ -43,17 +38,17 @@ const VerifyUser = () => {
           if (result.data.success) {
             toast.success(result.data.message);
             setTimeout(() => {
-              // window.location = "/login";
+              window.location = "/login";
             }, 500);
           } else {
             toast.error(result.data.message);
           }
         })
         .catch((e) => {
-          toast.error(e.message);
+          toast.error(messages.invalidDetails);
         });
     } else {
-      toast.error("fields cannot be empty");
+      toast.error(messages.invalidDetails);
     }
   };
   return (
@@ -67,45 +62,44 @@ const VerifyUser = () => {
               <div id="log" className="card border-primary rounded my-5">
                 <div className="card-body">
                   <h4 className="text-center text-dark">Verify Account</h4>
-                  <form method="post">
-                    <div className="">
-                      <InputField
-                        type="text"
-                        value={phoneNumber}
-                        placeholder="phone"
-                        label="phone"
-                        name="phoneNumber"
-                        onChange={handleChange}
-                        required
-                      />
-                    </div>
 
-                    <div className="">
-                      <InputField
-                        type="text"
-                        value={otp}
-                        placeholder="otp"
-                        label="otp"
-                        name="otp"
-                        onChange={handleChange}
-                        required
-                      />
-                    </div>
+                  <div className="">
+                    <InputField
+                      type="text"
+                      value={phoneNumber}
+                      placeholder="phone"
+                      label="phone"
+                      name="phoneNumber"
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
 
-                    <div className="button">
-                      <Button
-                        type="error"
-                        value={
-                          isProcessing
-                            ? messages.processingMessage
-                            : "Verify Account"
-                        }
-                        name="button"
-                        onClick={() => (!isProcessing ? verify() : null)}
-                        contain={true}
-                      />
-                    </div>
-                  </form>
+                  <div className="">
+                    <InputField
+                      type="text"
+                      value={otp}
+                      placeholder="otp"
+                      label="otp"
+                      name="otp"
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
+
+                  <div className="button">
+                    <Button
+                      type="button"
+                      value={
+                        isProcessing
+                          ? messages.processingMessage
+                          : "Verify Account"
+                      }
+                      name="button"
+                      onClick={() => (!isProcessing ? verify() : null)}
+                      contain={true}
+                    />
+                  </div>
                 </div>
               </div>
             </div>

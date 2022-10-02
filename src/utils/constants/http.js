@@ -7,7 +7,7 @@ function HttpRequests() {
   this.get = async (url, data, headers) => {
     return await axios.get(url, data, headers);
   };
-};
+}
 
 const http = new HttpRequests();
 export { http };
