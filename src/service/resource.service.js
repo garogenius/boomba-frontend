@@ -7,6 +7,12 @@ let resourceService = {
   getAllResourceType: async () => {
     return await http.get(`${util.endPoint}/resource-type`, util.getHeaders());
   },
+  getResourceById: async (id) => {
+    return await http.get(
+      `${util.endPoint}/resource-type/${id}`,
+      util.getHeaders()
+    );
+  },
   createResource: async (body) => {
     return await http.post(`${util.endPoint}/resource`, body, {
       headers: util.getAuthorizedHeaders(),

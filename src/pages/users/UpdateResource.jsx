@@ -3,28 +3,43 @@ import OtherPageBody from "./OtherPageBody";
 import Button from "./components/button/Button";
 import InputField from "./components/inputs/InputField";
 import TextArea from "./components/inputs/TextArea";
-import { auth } from "../../service/auth.service";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { messages } from "../../utils/constants/messages";
+import { resourceService } from "../../service/resource.service";
+import { useParams } from "react-router-dom";
 const UpdateResource = () => {
-  const [input, setInput] = useState({
-    name: "",
-    model: "",
-    color: "",
-    description: "",
-  });
   const [isProcessing, setIsProcessing] = useState(false);
-  const { name, model, color, description } = input;
+
+  const [name, setName] = useState("");
+  const [model, setModel] = useState("");
+  const [color, setColor] = useState("");
+  const [description, setDescription] = useState("");
+  let { id } = useParams();
+  useEffect(() => {
+    resourceService.getResourceById(id).then((result) => {
+      if (result.data.success) {
+        // alert(JSON.stringify(result.data.user));
+        setName(result.data.data.name);
+        setColor(result.data.user.color);
+        setModel(result.data.user.model);
+        setDescription(result.data.user.description);
+      } else {
+        toast.error(result.data.message);
+      }
+    });
+  }, [id]);
   const update = () => {
     const request = {
-      username: input.username,
-      password: input.password,
+      name: name,
+      model: model,
+      color: color,
+      description: description,
     };
 
     setIsProcessing(true);
-    auth
-      .userLogin(request)
+    resourceService
+      .updateResource(id, request)
       .then((result) => {
         setIsProcessing(false);
         if (result.data.success) {
@@ -75,12 +90,7 @@ const UpdateResource = () => {
                             placeholder="name"
                             label="name"
                             name="name"
-                            onChange={(e) =>
-                              setInput({
-                                ...input,
-                                name: e.target.value,
-                              })
-                            }
+                            onChange={(e) => setName(e.target.value)}
                             required
                           />
                         </div>
@@ -91,12 +101,7 @@ const UpdateResource = () => {
                             placeholder="model"
                             label="model"
                             name="model"
-                            onChange={(e) =>
-                              setInput({
-                                ...input,
-                                model: e.target.value,
-                              })
-                            }
+                            onChange={(e) => setModel(e.target.value)}
                             required
                           />
                         </div>
@@ -107,12 +112,7 @@ const UpdateResource = () => {
                             placeholder="color"
                             label="color"
                             name="color"
-                            onChange={(e) =>
-                              setInput({
-                                ...input,
-                                color: e.target.value,
-                              })
-                            }
+                            onChange={(e) => setColor(e.target.value)}
                             required
                           />
                         </div>
@@ -122,12 +122,7 @@ const UpdateResource = () => {
                             placeholder="description"
                             label="description"
                             name="description"
-                            onChange={(e) =>
-                              setInput({
-                                ...input,
-                                description: e.target.value,
-                              })
-                            }
+                            onChange={(e) => setDescription(e.target.value)}
                             required
                           />
                         </div>
