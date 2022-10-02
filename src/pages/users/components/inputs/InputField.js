@@ -1,13 +1,26 @@
-import React, { useState } from "react";
+import React from "react";
 
-const InputField = ({ label, value, myCHange, ...props }) => {
-  const [changeVal, setChangeVal] = useState("");
+const InputField = ({ label, value, myCHange, option, ...props }) => {
+  // const [changeVal, setChangeVal] = useState("");
   let handleChange = (cChange) => {
     myCHange = cChange;
   };
   return (
     <div className="form-group">
-      {label && <label htmlFor="input-field">{label}</label>}
+      {label && (
+        <label htmlFor="input-field">
+          {label}
+          <p
+            className="text-xs text-danger"
+            style={{ marginTop: "-23px", marginLeft: "50px" }}
+          >
+            {option}
+          </p>
+        </label>
+      )}
+      {/* {option && (
+        
+      )} */}
       <input
         className="form-control"
         // value={changeVal}

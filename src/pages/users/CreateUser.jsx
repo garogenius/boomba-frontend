@@ -25,6 +25,8 @@ const CreateUser = () => {
     if (input.phoneNumber.length < 11) toast.error(messages.phoneLengthMessage);
     if (input.nin.length < 11) toast.error(messages.ninLengthMessage);
     if (input.password.length < 6) toast.error(messages.passwordLengthMessage);
+    if (input.confirmPassword !== input.password)
+      toast.error(messages.passwordMisMatch);
     if (
       input.phoneNumber.length >= 11 &&
       input.nin.length >= 11 &&
@@ -80,6 +82,7 @@ const CreateUser = () => {
                           value={input.name}
                           placeholder="Name"
                           label="Name"
+                          option="**"
                           name="name"
                           onChange={(e) =>
                             setInput({
@@ -96,6 +99,7 @@ const CreateUser = () => {
                           value={input.emailAddress}
                           placeholder="email"
                           label="Email"
+                          option="**"
                           name="email"
                           onChange={(e) =>
                             setInput({
@@ -112,6 +116,7 @@ const CreateUser = () => {
                           value={input.phoneNumber}
                           placeholder="Phone"
                           label="Phone"
+                          option="**"
                           name="phone"
                           onChange={(e) =>
                             setInput({
@@ -128,6 +133,7 @@ const CreateUser = () => {
                           value={input.nin}
                           placeholder="Nin No"
                           label="nin"
+                          option="**"
                           name="nin-no"
                           onChange={(e) =>
                             setInput({
@@ -142,6 +148,7 @@ const CreateUser = () => {
                         <AccountType
                           value={input.accountType}
                           label="Account Type"
+                          option="**"
                           name="AccountType"
                           onChange={(e) =>
                             setInput({
@@ -164,6 +171,7 @@ const CreateUser = () => {
                           value={input.state}
                           placeholder="state"
                           label="state"
+                          option="*Optional"
                           name="state"
                           onChange={(e) =>
                             setInput({
@@ -179,6 +187,7 @@ const CreateUser = () => {
                           value={input.lga}
                           placeholder="Local Govt"
                           label="lga"
+                          option="*Optional"
                           name="lga"
                           onChange={(e) =>
                             setInput({
@@ -194,6 +203,7 @@ const CreateUser = () => {
                           value={input.street}
                           placeholder="street"
                           label="street"
+                          option="*Optional"
                           name="street"
                           onChange={(e) =>
                             setInput({
@@ -210,11 +220,28 @@ const CreateUser = () => {
                           value={input.password}
                           placeholder="password"
                           label="password"
+                          option="*"
                           name="password"
                           onChange={(e) =>
                             setInput({
                               ...input,
                               password: e.target.value,
+                            })
+                          }
+                        />
+                      </div>
+                      <div class="col-md-4">
+                        <InputField
+                          type="password"
+                          value={input.confirmPassword}
+                          placeholder="password"
+                          label="Confirm Password"
+                          option="*"
+                          name="password"
+                          onChange={(e) =>
+                            setInput({
+                              ...input,
+                              confirmPassword: e.target.value,
                             })
                           }
                         />

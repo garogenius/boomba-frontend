@@ -9,6 +9,7 @@ const messages = {
   ninLengthMessage: "Nin is not valid",
   reqNoLengthMessage: "Reg Number is not valid",
   otpLengthMessage: "OTP is not valid",
+  passwordMisMatch: "Password Mismatch",
 };
 
 export { messages };
