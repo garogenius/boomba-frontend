@@ -44,6 +44,7 @@ const AllResources = () => {
                         <th>Name</th>
                         <th>Identity Number</th>
                         <th>Type</th>
+                        <th>Status</th>
                         <th>Date Added</th>
                         <th>View Details</th>
                         <th style={{ width: "10%" }}>Action</th>
@@ -56,6 +57,12 @@ const AllResources = () => {
                         <td>Infinix</td>
                         <td>Im23456789</td>
                         <td>Phone</td>
+                        <td>
+                          <button className="btn btn-primary text-xs rounded px-2 py-2">
+                            Active
+                          </button>
+                        </td>
+
                         <td>9/09/2022</td>
                         <td>
                           <Link to="/view-resource">

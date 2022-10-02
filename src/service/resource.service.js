@@ -12,5 +12,10 @@ let resourceService = {
       headers: util.getAuthorizedHeaders(),
     });
   },
+  updateResource: async (body, id) => {
+    return await http.post(`${util.endPoint}/resource/${id}`, body, {
+      headers: util.getAuthorizedHeaders(),
+    });
+  },
 };
 export { resourceService };

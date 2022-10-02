@@ -10,7 +10,6 @@ import SingleBranch from "../../pages/users/SingleBranch";
 import Staff from "../../pages/users/Staff";
 import Store from "../../pages/users/Store";
 import Supplier from "../../pages/users/Supplier";
-import CreateBusiness from "../../pages/users/CreateBusiness";
 import CreateUser from "../../pages/users/CreateUser";
 import VerifyUser from "../../pages/users/VerifyUser";
 import TestDashboard from "../../pages/users/TestDashboard";
@@ -138,11 +137,6 @@ let routes = [
   {
     path: `${prefix}/supplier`,
     component: Supplier,
-    protected: false,
-  },
-  {
-    path: `${prefix}/create-business`,
-    component: CreateBusiness,
     protected: false,
   },
 ];
