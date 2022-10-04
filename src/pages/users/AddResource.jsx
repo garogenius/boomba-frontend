@@ -9,6 +9,7 @@ import Select from "./components/select/Select";
 import { messages } from "../../utils/constants/messages";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
 const AddResource = () => {
   const [isProcessing, setIsProcessing] = useState(false);
   const [resType, setResType] = useState([]);
@@ -63,12 +64,12 @@ const AddResource = () => {
             window.location = "/all-resource";
           }, 500);
         } else {
-          toast.error(result.data.message);
+          toast.error(messages.invalidDetails);
         }
       })
       .catch((e) => {
         setIsProcessing(false);
-        toast.error(e.message);
+        toast.error(messages.invalidDetails);
       });
     // } else {
     //   toast.error(messages.invalidDetails);
