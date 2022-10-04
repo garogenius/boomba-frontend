@@ -54,23 +54,21 @@ const AddResource = () => {
       catPicture: input.catPicture,
     };
     setIsProcessing(true);
-    resourceService
-      .createResource(request)
-      .then((result) => {
-        setIsProcessing(false);
-        if (result.data.success) {
-          toast.success(result.data.message);
-          setTimeout(() => {
-            window.location = "/all-resource";
-          }, 500);
-        } else {
-          toast.error(messages.invalidDetails);
-        }
-      })
-      .catch((e) => {
-        setIsProcessing(false);
-        toast.error(messages.invalidDetails);
-      });
+    resourceService.createResource(request).then((result) => {
+      setIsProcessing(false);
+      if (result.data.success) {
+        toast.success(result.data.message);
+        setTimeout(() => {
+          window.location = "/all-resource";
+        }, 500);
+      } else {
+        toast.error(result.data.message);
+      }
+    });
+    // .catch((e) => {
+    //   setIsProcessing(false);
+    //   toast.error(messages.invalidDetails);
+    // });
     // } else {
     //   toast.error(messages.invalidDetails);
     // }
@@ -186,7 +184,21 @@ const AddResource = () => {
                       </div>
 
                       <div className="col-xl-4">
-                        <FileInput
+                        <InputField
+                          type="text"
+                          value={input.picture}
+                          placeholder="picture1"
+                          label="picture1"
+                          name="model"
+                          onChange={(e) =>
+                            setInput({
+                              ...input,
+                              picture: e.target.value,
+                            })
+                          }
+                          required
+                        />
+                        {/* <FileInput
                           type="file"
                           value={input.picture}
                           placeholder="picture"
@@ -198,7 +210,7 @@ const AddResource = () => {
                               picture: e.target.value,
                             })
                           }
-                        />
+                        /> */}
                       </div>
                       <div className="col-xl-4 ">
                         <Select
@@ -239,7 +251,21 @@ const AddResource = () => {
                         />
                       </div>
                       <div className="col-xl-4">
-                        <FileInput
+                        <InputField
+                          type="text"
+                          value={input.catPicture}
+                          placeholder="picture2"
+                          label="picture2"
+                          name="model"
+                          onChange={(e) =>
+                            setInput({
+                              ...input,
+                              catPicture: e.target.value,
+                            })
+                          }
+                          required
+                        />
+                        {/* <FileInput
                           type="file"
                           value={input.catPicture}
                           label="catton Picture"
@@ -250,7 +276,7 @@ const AddResource = () => {
                               catPicture: e.target.value,
                             })
                           }
-                        />
+                        /> */}
                       </div>
                       <div className="col-xl-6">
                         <TextArea
